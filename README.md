@@ -5,3 +5,4 @@
 - Jake Richards
 - Devan Riddles
 - Dawson Cook
+- Jordan Augustine
