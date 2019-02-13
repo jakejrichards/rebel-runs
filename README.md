@@ -6,3 +6,4 @@
 - Devan Riddles
 - Dawson Cook
 - Jordan Augustine
+- Chris Long
