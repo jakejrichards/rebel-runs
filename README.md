@@ -1,2 +1,5 @@
 # RebelRuns
 
+## Contributors
+
+- Jake Richards
