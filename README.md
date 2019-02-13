@@ -3,4 +3,5 @@
 ## Contributors
 
 - Jake Richards
--   Devan Riddles
+- Devan Riddles
+- Dawson Cook
