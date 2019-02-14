@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Rebel Runs</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+  </head>
+  <body>
+    <script src="https://www.gstatic.com/firebasejs/5.8.2/firebase.js"></script>
+    <script>
+      // Initialize Firebase
+      const config = {
+        apiKey: "AIzaSyBRnVWBb0gzc1ZmxOUXWe_k6VqfnayhfCI",
+        authDomain: "rebelruns-f0966.firebaseapp.com",
+        databaseURL: "https://rebelruns-f0966.firebaseio.com",
+        projectId: "rebelruns-f0966",
+        storageBucket: "rebelruns-f0966.appspot.com",
+        messagingSenderId: "302383393254"
+      };
+
+      firebase.initializeApp(config);
+
+      function googleSignIn() {
+        const baseProvider = new firebase.auth.GoogleAuthProvider();
+        firebase
+          .auth()
+          .signInWithPopup(baseProvider)
+          .then(result => console.log(result))
+          .catch(err => console.log(err));
+      }
+    </script>
+    <button onclick="googleSignIn()">Sign In With Google</button>
+  </body>
+</html>
