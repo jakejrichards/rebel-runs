@@ -1,3 +1,5 @@
+import bodyParser from 'body-parser';
+import cors from 'cors';
 import express from "express";
 import firebase from "firebase";
 
@@ -13,6 +15,21 @@ const firebaseConfig = {
 };
 
 firebase.initializeApp(firebaseConfig);
+
+app.use(bodyParser.json());
+app.use(cors());
+
+app.post("/new_user", (req, res) => {
+  console.log(req.body);
+  const { email, name } = req.body;
+  const account = {
+    name,
+    email,
+  }
+  return firebase.firestore().collection('accounts').add(account).then(() => ({
+    message: 'Account created successfully!',
+  }))
+});
 
 app.get("/", (req, res) => {
   res.send("Hello World");

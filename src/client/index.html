@@ -26,7 +26,24 @@
         firebase
           .auth()
           .signInWithPopup(baseProvider)
-          .then(result => console.log(result))
+          .then(result => {
+            console.log(result);
+            if (result.additionalUserInfo.isNewUser) {
+              console.log('NEW USER');
+              fetch('http://localhost:3000/new_user', {
+                method: 'POST',
+                headers: {
+                  "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                  email: result.user.email,
+                  name: result.user.displayName,
+                }),
+              })
+                .then(console.log)
+                .catch(console.log)
+            }
+          })
           .catch(err => console.log(err));
       }
     </script>
