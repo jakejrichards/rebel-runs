@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { RestaurantService, Restaurant } from "../restaurant.service";
+import { RestaurantService, Restaurant } from "../services/restaurant.service";
 
 @Component({
   selector: "app-home",
@@ -9,7 +9,7 @@ import { RestaurantService, Restaurant } from "../restaurant.service";
 export class HomePage implements OnInit {
   restaurants: Restaurant[] = [];
 
-  constructor(public restaurantService: RestaurantService) {}
+  constructor(public restaurantService: RestaurantService) { }
 
   ngOnInit() {
     this.restaurantService.getRestaurants().subscribe(restaurants => {
