@@ -14,7 +14,6 @@ export class HomePage implements OnInit {
   ngOnInit() {
     this.restaurantService.getRestaurants().subscribe(restaurants => {
       this.restaurants = restaurants;
-      console.log(restaurants);
     });
   }
 }

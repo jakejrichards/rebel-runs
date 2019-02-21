@@ -1,5 +1,5 @@
 import { Injectable } from "@angular/core";
-import { AngularFirestore } from "@angular/fire/firestore";
+import { AngularFirestore, AngularFirestoreCollection } from "@angular/fire/firestore";
 import { Observable } from "rxjs";
 import { map } from "rxjs/operators";
 
@@ -13,12 +13,22 @@ export interface Restaurant {
   providedIn: "root"
 })
 export class RestaurantService {
-  restaurants: Observable<Restaurant[]>;
+  restaurants: AngularFirestoreCollection<Restaurant>;
 
   constructor(private db: AngularFirestore) {
-    this.restaurants = db
-      .collection<Restaurant>("restaurants")
-      .snapshotChanges()
+    this.restaurants = db.collection('restaurants');
+  }
+
+  createRestaurant(restaurantData: Restaurant) {
+    return this.restaurants.add(restaurantData);
+  }
+
+  getRestaurant(id: string) {
+    return this.db.doc<Restaurant>(id);
+  }
+
+  getRestaurants(): Observable<Restaurant[]> {
+    return this.restaurants.snapshotChanges()
       .pipe(
         map(changes =>
           changes.map(({ payload: { doc } }) => ({
@@ -27,9 +37,5 @@ export class RestaurantService {
           }))
         )
       );
-  }
-
-  getRestaurants() {
-    return this.restaurants;
   }
 }
