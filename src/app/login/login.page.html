@@ -1,16 +1,37 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>Login</ion-title>
-  </ion-toolbar>
+
+  <ion-title></ion-title>
+
 </ion-header>
 
+
 <ion-content padding>
+
   <div *ngIf="auth.user | async as user; else showLogin">
-    <h1>Hello {{ user.displayName }}!</h1>
-    <button (click)="logout()">Logout</button>
+    <div text-center>
+      <h1>Hello </h1>
+      <h1>{{ user.displayName }}!</h1>
+      <ion-button color="success" block shape="round" fill="solid" (click)="homepage()">Order</ion-button>
+
+    </div>
+
+    <ion-button color="danger" block shape="round" fill="solid" (click)="logout()">Logout</ion-button>
+
+
   </div>
   <ng-template #showLogin>
-    <p>Please login.</p>
-    <button (click)="login()">Login with Google</button>
+
+    <form method="post" action="login.page.html">
+      <div class="box">
+        <div text-center>
+          <h1>Rebel Runs</h1>
+          <h2>Please Login</h2>
+          <ion-button color="dark" block shape="round" fill="solid" (click)="login()" (click)="showAlert()">Log In With
+            Google</ion-button>
+        </div>
+      </div> <!-- End Box -->
+
+    </form>
   </ng-template>
+
 </ion-content>
