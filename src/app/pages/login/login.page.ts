@@ -23,6 +23,10 @@ export class LoginPage {
     this.router.navigateByUrl("/home");
   }
 
+  restaurants() {
+    this.router.navigateByUrl("/restaurants");
+  }
+
   logout() {
     this.auth.logout();
   }
