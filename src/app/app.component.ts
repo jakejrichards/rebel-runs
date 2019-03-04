@@ -20,15 +20,15 @@ export class AppComponent {
   ) {
     this.initializeApp();
   }
-  initializeApp() {
-    this.platform.ready().then(() => {
-      this.authService.user.subscribe(user => {
-        if (!user) this.router.navigateByUrl("/login");
-      });
+  async initializeApp() {
+    await this.platform.ready();
 
-      this.statusBar.styleDefault();
-      this.splashScreen.show();
-      this.splashScreen.hide();
+    this.authService.user.subscribe(user => {
+      if (!user) this.router.navigateByUrl("/login");
     });
+
+    this.statusBar.styleDefault();
+    this.splashScreen.show();
+    this.splashScreen.hide();
   }
 }
