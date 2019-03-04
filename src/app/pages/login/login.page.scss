@@ -18,4 +18,16 @@ h2 {
   margin: 0 auto 0 auto;
   padding: 0px 0px 70px 0px;
   border: #2980b9 4px solid;
+  position: absolute;
+  top:50%;
+  left:50%;
+  transform: translate(-50%,-50%);
+
+}
+.boxContainer{
+  position: absolute;
+  top:50%;
+  left:50%;
+  transform: translate(-50%,-50%);
+
 }
