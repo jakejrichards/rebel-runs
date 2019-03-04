@@ -27,7 +27,7 @@ export class RestaurantService {
   }
 
   getRestaurant(id: string) {
-    return this.db.doc<Restaurant>(id);
+    return this.restaurants.doc<Restaurant>(id);
   }
 
   getRestaurants(): Observable<Restaurant[]> {

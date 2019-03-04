@@ -1,0 +1,47 @@
+<ion-header>
+  <ion-toolbar
+    ><ion-buttons slot="start">
+      <ion-back-button>Back</ion-back-button>
+    </ion-buttons>
+    <ion-title>{{ restaurant.name }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-grid>
+    <ion-row>
+      <ion-col size="4">
+        <ion-text>
+          <h1>{{ restaurant.name }}</h1>
+        </ion-text>
+        <ion-img [src]="restaurant.img"></ion-img>
+      </ion-col>
+      <ion-col size="8">
+        <h2>Menu</h2>
+        <ion-list>
+          <ion-list-header>
+            <ion-label>Appetizers</ion-label>
+          </ion-list-header>
+          <ion-item>
+            <ion-label>Pretzel Bites</ion-label>
+          </ion-item>
+          <ion-item>
+            <ion-label>Parmesan Cheese Sticks</ion-label>
+          </ion-item>
+          <ion-item>
+            <ion-label>Buffalo Chicken Wings</ion-label>
+          </ion-item>
+          <ion-list-header>
+            <ion-label>Lunch</ion-label>
+          </ion-list-header>
+          <ion-item>
+            <ion-label>Cheeseburger and Fries</ion-label>
+          </ion-item>
+          <ion-item>
+            <ion-label>Grilled Cheese</ion-label>
+          </ion-item>
+        </ion-list>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
