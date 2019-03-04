@@ -27,4 +27,8 @@ export class RestaurantsPage implements OnInit {
   create = () => {
     this.router.navigateByUrl("/create-restaurant");
   };
+
+  open = (id: string) => {
+    this.router.navigateByUrl(`/restaurants/${id}`);
+  };
 }
