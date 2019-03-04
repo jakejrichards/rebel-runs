@@ -4,7 +4,7 @@
       Restaurants
     </ion-title>
     <ion-buttons slot="end">
-      <ion-button>
+      <ion-button (click)="create()">
         Create
       </ion-button>
     </ion-buttons>
@@ -26,7 +26,7 @@
               <h2>Open 9AM - 7PM</h2>
             </ion-text>
             <ion-text>
-              <p>Some more description here.</p>
+              <p>owner_id: {{ restaurant.owner_id }}</p>
             </ion-text>
             <ion-button expand="full">View</ion-button>
           </ion-card-content>

@@ -7,7 +7,6 @@ import { Observable } from "rxjs";
 import { map } from "rxjs/operators";
 
 export interface Restaurant {
-  id: string;
   img: string;
   name: string;
   owner_id: string;

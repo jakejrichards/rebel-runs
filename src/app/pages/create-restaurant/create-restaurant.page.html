@@ -1,9 +1,17 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>createRestaurant</ion-title>
+    <ion-title>Create A Restaurant</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content padding>
-
+  <ion-item>
+    <ion-label>Name</ion-label>
+    <ion-input [(ngModel)]="name" placeholder="Restaurant Name"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label>Image URL</ion-label>
+    <ion-input [(ngModel)]="img" [placeholder]="defaultImg"></ion-input>
+  </ion-item>
+  <ion-button (click)="create()" expand="full">Create</ion-button>
 </ion-content>
