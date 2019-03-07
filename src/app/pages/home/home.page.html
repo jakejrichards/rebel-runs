@@ -1,7 +1,44 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>Home</ion-title>
-  </ion-toolbar>
+<!-- <ion-header>
+    <ion-title>
+        <ion-buttons slot="start">
+            <ion-back-button defaultHref="home"></ion-back-button>
+        </ion-buttons>
+    </ion-title>
 </ion-header>
+<ion-content padding> 
+  <div class="nav"> 
+      <nav>
+        <a href="home">Home</a>
+        <a href="restaurants"> Restaurants</a>
+      </nav>
+  </div>
+</ion-content> -->
 
-<ion-content padding> </ion-content>
+<ion-header>
+    <ion-toolbar>
+      <ion-title>
+          <div class ="nav">
+              <nav>
+                <ul>
+                  <a href="home">Rebel Runs</a>
+                  <a href="home">About Us</a>
+                  <a href="restaurants">Restaurants</a>
+                </ul>
+              </nav>
+            </div>
+      </ion-title>
+
+      <!-- <ion-toolbar>
+          <ion-searchbar value= "Items/Restaurants" width = "40%"></ion-searchbar>
+        </ion-toolbar> -->
+      <ion-buttons slot="end">
+        <ion-button href = "login">Login</ion-button>
+      </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+<ion-content>
+  <div class="box">
+    Welcome to Rebel Runs
+    <p>We are a local company that specializes in local food delivery</p>
+  </div>
+</ion-content>
