@@ -1,39 +1,61 @@
 <ion-header>
+  <ion-title></ion-title>
+</ion-header>
 
-    <ion-title></ion-title>
-  
-  </ion-header>
-  
-  
-  <ion-content padding>
-  
-    <ng-template #showLogin>
-  
-      <form method="post" action="login.page.html">
-        <div class="box">
-          <div text-center>
-            <h1>Rebel Runs</h1>
-            <h2>Please Login</h2>
-            <ion-button color="dark" block shape="round" fill="solid" (click)="login()" (click)="showAlert()">Sign Up With
-              Google</ion-button>
-          </div>
-        </div> <!-- End Box -->
-  
-      </form>
-    </ng-template>
-  
-  
-    <div *ngIf="auth.user | async as user; else showLogin">
+<ion-content padding>
+  <ng-template #showLogin>
+    <form method="post" action="login.page.html">
       <div class="box">
-      <div text-center>
-        <h1>Hello </h1>
-        <h1>{{ user.displayName }}!</h1>
-        <ion-button color="success" block shape="round" fill="solid" (click)="restaurants()">Order</ion-button>
-        <ion-button color="danger" block shape="round" fill="solid" (click)="logout()">Logout</ion-button>
+        <div text-center>
+          <h1>Rebel Runs</h1>
+          <h2>Please Login</h2>
+          <ion-button
+            color="tertiary"
+            block
+            shape="round"
+            fill="solid"
+            (click)="login()"
+            (click)="showAlert()"
+            >Log in With Google</ion-button
+          >
+          <ion-button
+            color="dark"
+            block
+            shape="round"
+            fill="solid"
+            (click)="login()"
+            (click)="showAlert()"
+            >Sign Up With Google</ion-button
+          >
         </div>
-      </div> <!-- End Box -->
-  
+      </div>
+      <!-- End Box -->
+    </form>
+  </ng-template>
+
+  <div *ngIf="(auth.user | async) as user; else showLogin">
+    <div class="box">
+      <div text-center>
+        <h1>Hello</h1>
+        <h1>{{ user.displayName }}!</h1>
+        <ion-button
+          color="success"
+          block
+          shape="round"
+          fill="solid"
+          (click)="restaurants()"
+          >Order</ion-button
+        >
+        <ion-button
+          color="danger"
+          block
+          shape="round"
+          fill="solid"
+          (click)="logout()"
+          >Logout</ion-button
+        >
+      </div>
     </div>
-    
-  
-  </ion-content>
+    <!-- End Box -->
+  </div>
+</ion-content>
