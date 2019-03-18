@@ -17,7 +17,9 @@ const routes: Routes = [
   {
     path: "restaurants/:id",
     loadChildren: "./pages/restaurant/restaurant.module#RestaurantPageModule"
-  }
+  },
+  { path: 'owner', loadChildren: './pages/owner/owner.module#OwnerPageModule' },
+  { path: 'driver', loadChildren: './pages/driver/driver.module#DriverPageModule' }
 ];
 
 @NgModule({

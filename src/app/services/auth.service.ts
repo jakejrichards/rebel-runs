@@ -42,6 +42,8 @@ export class AuthService {
       .then(() => {
         if (accountType === "customer") {
           this.router.navigateByUrl(`/restaurants`);
+        } else {
+          this.router.navigateByUrl(`/${accountType}`);
         }
       });
   }
