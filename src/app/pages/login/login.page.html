@@ -9,13 +9,34 @@
         <div text-center>
           <h1>Rebel Runs</h1>
           <h2>Please Login</h2>
+          <ion-list>
+            <ion-radio-group>
+              <ion-list-header>
+                Account Type
+              </ion-list-header>
+
+              <ion-item>
+                <ion-label>Customer</ion-label>
+                <ion-radio (ionSelect)="selectType('customer')"></ion-radio>
+              </ion-item>
+
+              <ion-item>
+                <ion-label>Driver</ion-label>
+                <ion-radio (ionSelect)="selectType('driver')"></ion-radio>
+              </ion-item>
+
+              <ion-item>
+                <ion-label>Owner</ion-label>
+                <ion-radio (ionSelect)="selectType('owner')"></ion-radio>
+              </ion-item>
+            </ion-radio-group>
+          </ion-list>
           <ion-button
             color="tertiary"
             block
             shape="round"
             fill="solid"
             (click)="login()"
-            (click)="showAlert()"
             >Log in With Google</ion-button
           >
           <ion-button
@@ -24,7 +45,6 @@
             shape="round"
             fill="solid"
             (click)="login()"
-            (click)="showAlert()"
             >Sign Up With Google</ion-button
           >
         </div>

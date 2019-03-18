@@ -9,14 +9,21 @@ import { Router } from "@angular/router";
   styleUrls: ["./login.page.scss"]
 })
 export class LoginPage {
+  accountType: "owner" | "driver" | "customer";
+
   constructor(
     public auth: AuthService,
     public alertController: AlertController,
     private router: Router
   ) {}
 
+  selectType(accountType: "owner" | "driver" | "customer") {
+    this.accountType = accountType;
+  }
+
   async login() {
-    this.auth.login();
+    if (!this.accountType) alert("You must select an account type");
+    else this.auth.login(this.accountType);
   }
 
   homepage() {
@@ -30,15 +37,4 @@ export class LoginPage {
   logout() {
     this.auth.logout();
   }
-  /**
-  async showAlert() {
-    const alert = await this.alertController.create({
-      header: 'Logged In',
-      subHeader: '',
-      message: 'You have been successfully logged in',
-      buttons: ['OK']
-    });
-
-    await alert.present();
-  }  */
 }
