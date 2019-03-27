@@ -1,5 +1,9 @@
+ion-content {
+    --background: url("../../../assets/images/square.jpg") no-repeat center
+      center / cover;
+  }
 .nav{
-    border:5px solid #c1051e;
+    // border:5px solid #c1051e;
     border: width 100;
     list-style:none;
     margin:0;
@@ -34,4 +38,7 @@
     position: absolute;
     font-size: 22px;
     color: #2581d1;
+  }
+  .home-background{
+    background-image: url('//square.jpg')
   }
