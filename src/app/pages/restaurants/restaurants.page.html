@@ -7,8 +7,8 @@
       <ion-back-button defaultHref="home"></ion-back-button>
     </ion-buttons>
     <ion-buttons slot="end">
-      <ion-button (click)="create()">
-        Create
+      <ion-button (click)="checkout()">
+        <ion-icon name="cart"></ion-icon> Checkout {{ numItemsInCheckout }}
       </ion-button>
     </ion-buttons>
   </ion-toolbar>
@@ -32,7 +32,8 @@
               <p>owner_id: {{ restaurant.owner_id }}</p>
             </ion-text>
             <ion-button expand="full" (click)="open(restaurant.id)"
-              >View</ion-button>
+              >View</ion-button
+            >
           </ion-card-content>
         </ion-card>
       </ion-col>

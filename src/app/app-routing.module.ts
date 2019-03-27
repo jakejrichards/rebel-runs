@@ -19,7 +19,8 @@ const routes: Routes = [
     loadChildren: "./pages/restaurant/restaurant.module#RestaurantPageModule"
   },
   { path: 'owner', loadChildren: './pages/owner/owner.module#OwnerPageModule' },
-  { path: 'driver', loadChildren: './pages/driver/driver.module#DriverPageModule' }
+  { path: 'driver', loadChildren: './pages/driver/driver.module#DriverPageModule' },
+  { path: 'checkout', loadChildren: './pages/checkout/checkout.module#CheckoutPageModule' }
 ];
 
 @NgModule({

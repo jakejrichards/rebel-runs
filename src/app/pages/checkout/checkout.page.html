@@ -1,0 +1,24 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>checkout</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-grid>
+    <ion-row>
+      <ion-col size="3" *ngFor="let item of selected">
+        <ion-card>
+          <ion-card-header>
+            <ion-card-subtitle>{{ item.name }}</ion-card-subtitle>
+            <ion-card-title>{{ item.price }}</ion-card-title>
+          </ion-card-header>
+        </ion-card>
+      </ion-col>
+      <ion-col size="12">
+        <p>Total: ${{ total }}</p>
+        <ion-button (click)="placeOrder()">Order Now</ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
