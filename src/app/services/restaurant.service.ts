@@ -24,6 +24,17 @@ interface Item {
 
 interface Order {
   items: Item[];
+  customer: {
+    firstName: string;
+    lastName: string;
+  };
+  address: {
+    line1: string;
+    line2: string;
+    city: string;
+    state: string;
+    zip: number;
+  };
   customer_id: string;
   restaurant_id: string;
   total: number;

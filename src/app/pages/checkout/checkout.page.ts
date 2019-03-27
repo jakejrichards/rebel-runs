@@ -22,6 +22,13 @@ export class CheckoutPage implements OnInit {
     img: "",
     name: ""
   };
+  firstName = "";
+  lastName = "";
+  addressLine1 = "";
+  addressLine2 = "";
+  city = "";
+  state = "";
+  zip = "";
 
   constructor(
     private authService: AuthService,
@@ -49,8 +56,18 @@ export class CheckoutPage implements OnInit {
   }
 
   placeOrder() {
-    console.log("TEST");
     return this.restaurantService.createOrder({
+      customer: {
+        firstName: this.firstName,
+        lastName: this.lastName
+      },
+      address: {
+        line1: this.addressLine1,
+        line2: this.addressLine2,
+        city: this.city,
+        state: this.state,
+        zip: parseInt(this.zip)
+      },
       items: this.items,
       total: this.total,
       customer_id: `customer.${this.authService.user.uid}`,
