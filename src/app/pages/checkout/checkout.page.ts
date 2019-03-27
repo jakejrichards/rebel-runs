@@ -6,6 +6,7 @@ import {
   Restaurant
 } from "src/app/services/restaurant.service";
 import { Router } from "@angular/router";
+import { AuthService } from "src/app/services/auth.service";
 
 @Component({
   selector: "app-checkout",
@@ -23,6 +24,7 @@ export class CheckoutPage implements OnInit {
   };
 
   constructor(
+    private authService: AuthService,
     private checkoutService: CheckoutService,
     private restaurantService: RestaurantService,
     private router: Router
@@ -47,9 +49,11 @@ export class CheckoutPage implements OnInit {
   }
 
   placeOrder() {
-    this.restaurantService.createOrder({
+    console.log("TEST");
+    return this.restaurantService.createOrder({
       items: this.items,
       total: this.total,
+      customer_id: `customer.${this.authService.user.uid}`,
       restaurant_id: "id"
     });
   }

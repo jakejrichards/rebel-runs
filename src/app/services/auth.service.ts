@@ -8,13 +8,17 @@ import { Router } from "@angular/router";
   providedIn: "root"
 })
 export class AuthService {
+  user: firebase.User;
+
   constructor(
     public angularFireAuth: AngularFireAuth,
     private db: AngularFirestore,
     private router: Router
-  ) {}
-
-  user = this.angularFireAuth.user;
+  ) {
+    angularFireAuth.user.subscribe(user => {
+      this.user = user;
+    });
+  }
 
   login(accountType: "owner" | "driver" | "customer") {
     return this.angularFireAuth.auth

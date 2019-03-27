@@ -11,18 +11,48 @@
   </ion-grid>
 
   <ion-grid *ngIf="items.length > 0">
-    <h1>{{ restaurant.name }}</h1>
-    <h3>Cart Details</h3>
     <ion-row>
-      <ion-col size="4">
+      <ion-col size="5">
+        <h1>We need your information</h1>
+        <ion-item>
+          <ion-label position="floating">First Name</ion-label>
+          <ion-input></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">Last Name</ion-label>
+          <ion-input></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">Address Line 1</ion-label>
+          <ion-input></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">Address Line 2</ion-label>
+          <ion-input></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">City</ion-label>
+          <ion-input></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">State</ion-label>
+          <ion-input></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">Zip Code</ion-label>
+          <ion-input></ion-input>
+        </ion-item>
+      </ion-col>
+      <ion-col offset="1" size="6">
+        <h1>{{ restaurant.name }}</h1>
+        <h4>Delivery Time: 35 - 45 minutes</h4>
+        <h4>Cart Items</h4>
         <ion-card *ngFor="let item of items">
           <ion-card-header>
             <ion-card-subtitle>{{ item.name }}</ion-card-subtitle>
             <ion-card-title>{{ item.price }}</ion-card-title>
           </ion-card-header>
         </ion-card>
-      </ion-col>
-      <ion-col size="12">
         <p>Total: ${{ total }}</p>
         <ion-button (click)="placeOrder()">Order Now</ion-button>
       </ion-col>

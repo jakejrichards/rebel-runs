@@ -15,8 +15,16 @@ export interface Restaurant {
   owner_id: string;
 }
 
+interface Item {
+  name: string;
+  price: number;
+  description: string;
+  restaurant_id: string;
+}
+
 interface Order {
-  items: any[];
+  items: Item[];
+  customer_id: string;
   restaurant_id: string;
   total: number;
 }

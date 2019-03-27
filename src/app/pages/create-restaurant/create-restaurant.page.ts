@@ -22,14 +22,12 @@ export class CreateRestaurantPage implements OnInit {
   ngOnInit() {}
 
   create = () => {
-    return this.authService.user.forEach(user => {
-      this.restaurantService
-        .createRestaurant({
-          name: this.name,
-          img: this.img || this.defaultImg,
-          owner_id: user.uid
-        })
-        .then(() => this.router.navigateByUrl("/restaurants"));
-    });
+    return this.restaurantService
+      .createRestaurant({
+        name: this.name,
+        img: this.img || this.defaultImg,
+        owner_id: `owner.${this.authService.user.uid}`
+      })
+      .then(() => this.router.navigateByUrl("/restaurants"));
   };
 }

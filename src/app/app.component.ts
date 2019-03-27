@@ -23,7 +23,7 @@ export class AppComponent {
   async initializeApp() {
     await this.platform.ready();
 
-    this.authService.user.subscribe(user => {
+    this.authService.angularFireAuth.user.subscribe(user => {
       if (!user) this.router.navigateByUrl("/login");
     });
 
