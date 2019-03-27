@@ -7,6 +7,7 @@ import {
 } from "src/app/services/restaurant.service";
 import { Router } from "@angular/router";
 import { AuthService } from "src/app/services/auth.service";
+import { AlertController } from "@ionic/angular";
 
 @Component({
   selector: "app-checkout",
@@ -31,6 +32,7 @@ export class CheckoutPage implements OnInit {
   zip = "";
 
   constructor(
+    private alertController: AlertController,
     private authService: AuthService,
     private checkoutService: CheckoutService,
     private restaurantService: RestaurantService,
@@ -55,7 +57,15 @@ export class CheckoutPage implements OnInit {
     this.router.navigateByUrl("/restaurants");
   }
 
-  placeOrder() {
+  async placeOrder() {
+    if (_.find([_.entries(this), item => !item])) {
+      const alert = await this.alertController.create({
+        header: "Missing Fields",
+        message: _.keys(_.pickBy(this, item => !item)).join(", ")
+      });
+      await alert.present();
+      return;
+    }
     return this.restaurantService.createOrder({
       customer: {
         firstName: this.firstName,
