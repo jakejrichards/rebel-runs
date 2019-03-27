@@ -27,7 +27,8 @@ export class CheckoutPage implements OnInit {
   placeOrder() {
     this.restaurantService.createOrder({
       items: this.selected,
-      total: this.total
+      total: this.total,
+      restaurant_id: "id"
     });
   }
 }
