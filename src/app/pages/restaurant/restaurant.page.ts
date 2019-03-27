@@ -13,6 +13,7 @@ import { CheckoutService } from "src/app/services/checkout.service";
 })
 export class RestaurantPage implements OnInit {
   restaurant: Restaurant = {
+    id: "",
     img: "",
     name: "",
     owner_id: ""
@@ -31,7 +32,6 @@ export class RestaurantPage implements OnInit {
     this.activatedRoute.paramMap.subscribe(route => {
       this.restaurantService
         .getRestaurant(route.get("id"))
-        .valueChanges()
         .forEach(restaurant => {
           this.restaurant = restaurant;
         });
@@ -54,6 +54,9 @@ export class RestaurantPage implements OnInit {
   }
 
   onSelect = (item: any) => {
-    this.checkoutService.addItem(item);
+    this.checkoutService.addItem({
+      ...item,
+      restaurant_id: this.restaurant.id
+    });
   };
 }

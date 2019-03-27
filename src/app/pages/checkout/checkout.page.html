@@ -1,14 +1,21 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>checkout</ion-title>
+    <ion-title>Checkout</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content padding>
-  <ion-grid>
+  <ion-grid *ngIf="items.length === 0">
+    <h1>Your cart is empty</h1>
+    <ion-button (click)="backToRestaurants()">Return to restaurants</ion-button>
+  </ion-grid>
+
+  <ion-grid *ngIf="items.length > 0">
+    <h1>{{ restaurant.name }}</h1>
+    <h3>Cart Details</h3>
     <ion-row>
-      <ion-col size="3" *ngFor="let item of selected">
-        <ion-card>
+      <ion-col size="4">
+        <ion-card *ngFor="let item of items">
           <ion-card-header>
             <ion-card-subtitle>{{ item.name }}</ion-card-subtitle>
             <ion-card-title>{{ item.price }}</ion-card-title>

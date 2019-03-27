@@ -6,7 +6,10 @@ import {
 import { Observable } from "rxjs";
 import { map } from "rxjs/operators";
 
+type Omit<T, K> = Pick<T, Exclude<keyof T, K>>;
+
 export interface Restaurant {
+  id: string;
   img: string;
   name: string;
   owner_id: string;
@@ -25,7 +28,7 @@ export class RestaurantService {
   orders: AngularFirestoreCollection<Order>;
   restaurants: AngularFirestoreCollection<Restaurant>;
 
-  constructor(private db: AngularFirestore) {
+  constructor(db: AngularFirestore) {
     this.orders = db.collection("orders");
     this.restaurants = db.collection("restaurants");
   }
@@ -34,8 +37,8 @@ export class RestaurantService {
     return this.orders.add(order);
   }
 
-  createRestaurant(restaurantData: Restaurant) {
-    return this.restaurants.add(restaurantData);
+  createRestaurant(restaurantData: Omit<Restaurant, "id">) {
+    return this.restaurants.add(restaurantData as any);
   }
 
   getOrders() {
@@ -50,7 +53,15 @@ export class RestaurantService {
   }
 
   getRestaurant(id: string) {
-    return this.restaurants.doc<Restaurant>(id);
+    return this.restaurants
+      .doc<Restaurant>(id)
+      .snapshotChanges()
+      .pipe(
+        map(({ payload }) => ({
+          id: payload.id,
+          ...payload.data()
+        }))
+      );
   }
 
   getRestaurants(): Observable<Restaurant[]> {
