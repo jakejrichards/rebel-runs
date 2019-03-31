@@ -30,6 +30,10 @@ export class RestaurantsPage implements OnInit {
     });
   }
 
+  myOrders = () => {
+    this.router.navigateByUrl("/my-orders");
+  };
+
   checkout = () => {
     this.router.navigateByUrl("/checkout");
   };

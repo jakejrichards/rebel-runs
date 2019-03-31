@@ -7,6 +7,9 @@
       <ion-back-button defaultHref="home"></ion-back-button>
     </ion-buttons>
     <ion-buttons slot="end">
+      <ion-button (click)="myOrders()">
+        <ion-icon name="list"></ion-icon> My Orders
+      </ion-button>
       <ion-button (click)="checkout()">
         <ion-icon name="cart"></ion-icon> Checkout {{ numItemsInCheckout }}
       </ion-button>

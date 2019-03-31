@@ -23,6 +23,7 @@ export interface Item {
 }
 
 export interface Order {
+  placed_at: string;
   items: Item[];
   customer: {
     firstName: string;

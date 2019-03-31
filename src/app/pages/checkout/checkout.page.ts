@@ -86,7 +86,8 @@ export class CheckoutPage implements OnInit {
       items: this.items,
       total: this.total,
       customer_id: `customer.${this.authService.user.uid}`,
-      restaurant_id: "id"
+      restaurant_id: this.restaurant.id,
+      placed_at: new Date().toISOString()
     });
   }
 }
