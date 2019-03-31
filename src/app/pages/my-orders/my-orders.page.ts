@@ -7,6 +7,8 @@ import {
   Restaurant
 } from "src/app/services/restaurant.service";
 import { AuthService } from "src/app/services/auth.service";
+import { Router } from "@angular/router";
+import { CheckoutService } from "src/app/services/checkout.service";
 
 @Component({
   selector: "app-my-orders",
@@ -19,10 +21,17 @@ export class MyOrdersPage implements OnInit {
 
   constructor(
     private authService: AuthService,
-    private restaurantService: RestaurantService
+    private checkoutService: CheckoutService,
+    private restaurantService: RestaurantService,
+    private router: Router
   ) {}
 
+  numItemsInCheckout = 0;
+
   ngOnInit() {
+    this.checkoutService.items().subscribe(items => {
+      this.numItemsInCheckout = items.length;
+    });
     this.restaurantService.getRestaurants().subscribe(restaurants => {
       this.restaurants = _.keyBy(restaurants, "id");
     });
@@ -39,5 +48,9 @@ export class MyOrdersPage implements OnInit {
         }));
       console.log(this.orders);
     });
+  }
+
+  checkout() {
+    this.router.navigateByUrl("/checkout");
   }
 }

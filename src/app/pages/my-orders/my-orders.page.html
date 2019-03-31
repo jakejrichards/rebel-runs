@@ -4,6 +4,11 @@
       <ion-back-button></ion-back-button>
     </ion-buttons>
     <ion-title>My Orders</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="checkout()">
+        <ion-icon name="cart"></ion-icon> Checkout {{ numItemsInCheckout }}
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 

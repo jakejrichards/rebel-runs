@@ -49,6 +49,10 @@ export class RestaurantPage implements OnInit {
     { name: "Spaghetti", price: 3.69, description: "Animal style fries." }
   ];
 
+  myOrders() {
+    this.router.navigateByUrl("/my-orders");
+  }
+
   checkout() {
     this.router.navigateByUrl("/checkout");
   }
