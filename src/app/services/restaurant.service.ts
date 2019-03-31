@@ -15,14 +15,14 @@ export interface Restaurant {
   owner_id: string;
 }
 
-interface Item {
+export interface Item {
   name: string;
   price: number;
   description: string;
   restaurant_id: string;
 }
 
-interface Order {
+export interface Order {
   items: Item[];
   customer: {
     firstName: string;

@@ -5,14 +5,34 @@
 </ion-header>
 
 <ion-content padding>
-    <ion-grid>
-        <ion-row>
-          <ion-col>
-            <h1>Orders Ready to Deliver</h1>
-          </ion-col>
-          <ion-col>
-            <h1>Your Orders</h1>
-          </ion-col>
-        </ion-row>
-      </ion-grid>
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <h1>Orders Ready to Deliver</h1>
+        <ion-card *ngFor="let order of orders">
+          <ion-card-header>
+            <ion-card-title>{{ order.restaurant_id }}</ion-card-title>
+            <ion-card-subtitle>Ready for pickup in 5 minutes</ion-card-subtitle>
+          </ion-card-header>
+          <ion-card-content>
+            <ion-text
+              >{{ order.customer.firstName }}
+              {{ order.customer.lastName }}</ion-text
+            ><br />
+            <ion-text>{{ order.address.line1 }}</ion-text>
+            <ion-text>{{ order.address.line2 }}</ion-text
+            ><br />
+            <ion-text
+              >{{ order.address.city }}, {{ order.address.state }}
+              {{ order.address.zip }}</ion-text
+            >
+          </ion-card-content>
+          <ion-button expand="block">Claim</ion-button>
+        </ion-card>
+      </ion-col>
+      <ion-col>
+        <h1>Your Orders</h1>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>

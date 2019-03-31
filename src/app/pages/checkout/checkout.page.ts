@@ -57,11 +57,16 @@ export class CheckoutPage implements OnInit {
     this.router.navigateByUrl("/restaurants");
   }
 
+  getMissingFields() {
+    return _.pickBy(this, item => !item);
+  }
+
   async placeOrder() {
-    if (_.find([_.entries(this), item => !item])) {
+    const missingFields = this.getMissingFields();
+    if (!_.isEmpty(missingFields)) {
       const alert = await this.alertController.create({
         header: "Missing Fields",
-        message: _.keys(_.pickBy(this, item => !item)).join(", ")
+        message: _.keys(missingFields).join(", ")
       });
       await alert.present();
       return;
