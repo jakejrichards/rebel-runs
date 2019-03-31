@@ -53,6 +53,10 @@ export class CheckoutPage implements OnInit {
     });
   }
 
+  checkout() {
+    this.router.navigateByUrl("/checkout");
+  }
+
   myOrders() {
     this.router.navigateByUrl("/my-orders");
   }
