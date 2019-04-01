@@ -40,30 +40,4 @@
       <!-- End Box -->
     </form>
   </ng-template>
-
-  <div *ngIf="(auth.user | async) as user; else showLogin">
-    <div class="box">
-      <div text-center>
-        <h1>Hello</h1>
-        <h1>{{ user.displayName }}!</h1>
-        <ion-button
-          color="success"
-          block
-          shape="round"
-          fill="solid"
-          (click)="restaurants()"
-          >Order</ion-button
-        >
-        <ion-button
-          color="danger"
-          block
-          shape="round"
-          fill="solid"
-          (click)="logout()"
-          >Logout</ion-button
-        >
-      </div>
-    </div>
-    <!-- End Box -->
-  </div>
 </ion-content>
