@@ -70,6 +70,9 @@
           <ion-card-header>
             <ion-card-subtitle>{{ item.name }}</ion-card-subtitle>
             <ion-card-title>{{ item.price }}</ion-card-title>
+            <ion-button (click)="remove(item)" color="danger"
+              >Remove</ion-button
+            >
           </ion-card-header>
         </ion-card>
         <p>Total: ${{ total }}</p>

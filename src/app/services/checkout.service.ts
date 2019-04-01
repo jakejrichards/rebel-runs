@@ -1,3 +1,4 @@
+import * as _ from "lodash";
 import { Injectable } from "@angular/core";
 import { BehaviorSubject } from "rxjs";
 import { AlertController } from "@ionic/angular";
@@ -12,6 +13,11 @@ export class CheckoutService {
 
   items() {
     return this._items.asObservable();
+  }
+
+  removeItem(item: any) {
+    const items = this._items.getValue();
+    this._items.next(items.filter(i => i.id !== item.id));
   }
 
   addItem(item: any) {

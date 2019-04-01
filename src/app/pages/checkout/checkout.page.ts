@@ -42,7 +42,10 @@ export class CheckoutPage implements OnInit {
 
   ngOnInit() {
     this.checkoutService.items().subscribe(items => {
-      if (!items.length) return;
+      if (!items.length) {
+        this.items = items;
+        return;
+      }
       const [{ restaurant_id }] = items;
       this.restaurantService
         .getRestaurant(restaurant_id)
@@ -72,6 +75,10 @@ export class CheckoutPage implements OnInit {
 
   getMissingFields() {
     return _.pickBy(this, item => !item);
+  }
+
+  remove(item: any) {
+    this.checkoutService.removeItem(item);
   }
 
   async placeOrder() {
