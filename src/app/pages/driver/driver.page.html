@@ -11,7 +11,7 @@
         <h1>Orders Ready to Deliver</h1>
         <ion-card *ngFor="let order of orders">
           <ion-card-header>
-            <ion-card-title>{{ order.restaurant_id }}</ion-card-title>
+            <ion-card-title>{{ order.restaurant.name }}</ion-card-title>
             <ion-card-subtitle>Ready for pickup in 5 minutes</ion-card-subtitle>
           </ion-card-header>
           <ion-card-content>

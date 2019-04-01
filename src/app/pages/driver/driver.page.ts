@@ -7,14 +7,22 @@ import { RestaurantService, Order } from "src/app/services/restaurant.service";
   styleUrls: ["./driver.page.scss"]
 })
 export class DriverPage implements OnInit {
-  orders: Order[] = [];
+  orders = [];
 
   constructor(private restaurantService: RestaurantService) {}
 
   ngOnInit() {
     this.restaurantService.getOrders().subscribe(orders => {
-      console.log(orders);
-      this.orders = orders;
+      return orders.forEach(order => {
+        return this.restaurantService
+          .getRestaurant(order.restaurant_id)
+          .forEach(restaurant => {
+            this.orders.push({
+              ...order,
+              restaurant
+            });
+          });
+      });
     });
   }
 }
