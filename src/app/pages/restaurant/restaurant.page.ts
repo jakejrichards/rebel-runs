@@ -13,6 +13,8 @@ import { ToastController } from "@ionic/angular";
   styleUrls: ["./restaurant.page.scss"]
 })
 export class RestaurantPage implements OnInit {
+  items = [];
+
   restaurant: Restaurant = {
     id: "",
     img: "",
@@ -38,18 +40,15 @@ export class RestaurantPage implements OnInit {
           this.restaurant = restaurant;
         });
     });
+    this.restaurantService.getRestaurantsItems().subscribe(items => {
+      this.items = items.filter(
+        item => item.restaurant_id === this.restaurant.id
+      );
+    });
     this.checkoutService.items().subscribe(items => {
       this.numItemsInCheckout = items.length;
     });
   }
-
-  items = [
-    { name: "French Fries", price: 0.99, description: "Animal style fries." },
-    { name: "Cheeseburger", price: 1.99, description: "Yeet." },
-    { name: "Pizza", price: 2.99, description: "pepperoni" },
-    { name: "Olives", price: 1.39, description: "Animal style fries." },
-    { name: "Spaghetti", price: 3.69, description: "Animal style fries." }
-  ];
 
   myOrders() {
     this.router.navigateByUrl("/my-orders");
