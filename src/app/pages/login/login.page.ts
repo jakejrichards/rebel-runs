@@ -9,17 +9,13 @@ import { Router } from "@angular/router";
   styleUrls: ["./login.page.scss"]
 })
 export class LoginPage {
-  accountType: "owner" | "driver" | "customer";
+  accountType: "owner" | "driver" | "customer" = "customer";
 
   constructor(
     public auth: AuthService,
     public alertController: AlertController,
     private router: Router
   ) {}
-
-  selectType(accountType: "owner" | "driver" | "customer") {
-    this.accountType = accountType;
-  }
 
   async login() {
     if (!this.accountType) alert("You must select an account type");

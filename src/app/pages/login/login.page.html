@@ -9,28 +9,16 @@
         <div text-center>
           <h1>Rebel Runs</h1>
           <h2>Please Login</h2>
-          <ion-list>
-            <ion-radio-group>
-              <ion-list-header>
-                Account Type
-              </ion-list-header>
-
-              <ion-item>
-                <ion-label>Customer</ion-label>
-                <ion-radio (ionSelect)="selectType('customer')"></ion-radio>
-              </ion-item>
-
-              <ion-item>
-                <ion-label>Driver</ion-label>
-                <ion-radio (ionSelect)="selectType('driver')"></ion-radio>
-              </ion-item>
-
-              <ion-item>
-                <ion-label>Owner</ion-label>
-                <ion-radio (ionSelect)="selectType('owner')"></ion-radio>
-              </ion-item>
-            </ion-radio-group>
-          </ion-list>
+          <ion-select
+            [(ngModel)]="accountType"
+            [ngModelOptions]="{ standalone: true }"
+            okText="Okay"
+            cancelText="Dismiss"
+          >
+            <ion-select-option value="customer">Customer</ion-select-option>
+            <ion-select-option value="owner">Owner</ion-select-option>
+            <ion-select-option value="driver">Driver</ion-select-option>
+          </ion-select>
           <ion-button
             color="tertiary"
             block
