@@ -28,8 +28,8 @@ export class MyOrdersPage implements OnInit {
 
   numItemsInCheckout = 0;
 
-  ngOnInit() {
-    this.checkoutService.items().subscribe(items => {
+  ngOnInit() { 
+   this.checkoutService.items().subscribe(items => {
       this.numItemsInCheckout = items.length;
     });
     this.restaurantService.getRestaurants().subscribe(restaurants => {

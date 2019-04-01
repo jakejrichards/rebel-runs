@@ -4,6 +4,9 @@
       <ion-back-button></ion-back-button>
     </ion-buttons>
     <ion-title>{{ restaurant.name }} (Owner: Menu)</ion-title>
+    <ion-button slot= "end" (click)="createItem(restaurant.id)">
+      Add Item
+    </ion-button>
   </ion-toolbar>
 </ion-header>
 
@@ -16,30 +19,24 @@
       </ion-col>
       <ion-col size="8">
         <h2>Menu</h2>
-        <ion-button (click)="createItem(restaurant.id)">
-          Add Item
-        </ion-button>
+       
         
         <ion-row>
-          <ion-col size="3" *ngFor="let restaurant of restaurants">
+          <ion-col size="3" *ngFor="let item of items">
             <ion-card>
-              <ion-card-header>
-                <ion-card-subtitle>Time to delivery: 35 minutes</ion-card-subtitle>
-                <ion-card-title>{{ restaurant.name }}</ion-card-title>
-              </ion-card-header>
               
               <ion-card-content>
                   <ion-item>
-                      <ion-label> Name: {{ item.name }}</ion-label>
+                      <ion-label> Name: {{ items.collection.name }}</ion-label>
                     </ion-item>
             
-                    <ion-item>
-                      <ion-label>Description: {{ item.description }} </ion-label>
-                    </ion-item>
+                    <ion-text>
+                      <p>Description: {{ items.description }} <p>
+                    </ion-text>
             
-                    <ion-item>
-                      <ion-label> Price: {{ item.price }}</ion-label>
-                    </ion-item>
+                    <ion-text>
+                      <p> Price: {{ items.price }}</p>
+                    </ion-text>
             
                    
                 <ion-text>

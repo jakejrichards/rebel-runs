@@ -1,4 +1,4 @@
-//OLD CODE
+
 import { Component, OnInit } from '@angular/core';
 import {Restaurant, RestaurantService } from "../../services/restaurant.service";
 import { Router } from "@angular/router";

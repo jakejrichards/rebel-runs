@@ -2,7 +2,8 @@ import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
 import {
   Restaurant,
-  RestaurantService
+  RestaurantService,
+  Item
 } from "src/app/services/restaurant.service";
 import { Router } from "@angular/router";
 
@@ -14,12 +15,14 @@ import { Router } from "@angular/router";
 })
 
 export class OwnerMenuPage implements OnInit {
+  items: Item [] = [];
   restaurant: Restaurant = {
     id:"",    
     img: "",
     name: "",
     owner_id: ""
-  };
+  }
+ 
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -40,6 +43,8 @@ export class OwnerMenuPage implements OnInit {
           this.restaurant = restaurant;
         });
     });
-    
+    this.restaurantService.getRestaurantsItems().subscribe(items => {
+      this.items = items;
+    });
   }
 }

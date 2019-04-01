@@ -71,6 +71,17 @@ export class RestaurantService {
     return this.items.doc<Item>(id);
   }
 
+  getRestaurantsItems(): Observable<Item[]> {
+    return this.items.snapshotChanges().pipe(
+      map(changes =>
+        changes.map(({ payload: { doc } }) => ({
+          ...doc.data(),
+          id: doc.id
+        }))
+      )
+    );
+  }
+
   getOrders() {
     return this.orders.snapshotChanges().pipe(
       map(changes =>
@@ -94,16 +105,7 @@ export class RestaurantService {
       );
   }
 
-  getRestaurantsItems(): Observable<Item[]> {
-    return this.items.snapshotChanges().pipe(
-      map(changes =>
-        changes.map(({ payload: { doc } }) => ({
-          ...doc.data(),
-          id: doc.id
-        }))
-      )
-    );
-  }
+ 
 
 
   getRestaurants(): Observable<Restaurant[]> {
