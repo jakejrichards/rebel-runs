@@ -35,7 +35,9 @@
             <ion-label
               >{{ item.name }} - <b>${{ item.price }}</b></ion-label
             >
-            <ion-button (click)="onSelect(item)">Add to Cart</ion-button>
+            <ion-button color="secondary" (click)="onSelect(item)"
+              ><ion-icon name="add"></ion-icon> Add to cart</ion-button
+            >
           </ion-item>
         </ion-list>
       </ion-col>

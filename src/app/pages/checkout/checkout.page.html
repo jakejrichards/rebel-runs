@@ -55,7 +55,15 @@
         </ion-item>
       </ion-col>
       <ion-col offset="1" size="6">
-        <h1>{{ restaurant.name }}</h1>
+        <h1>
+          {{ restaurant.name }}
+          <ion-button
+            style="float: right"
+            (click)="moreItems()"
+            color="secondary"
+            ><ion-icon name="add"></ion-icon> Add more items</ion-button
+          >
+        </h1>
         <h4>Delivery Time: 35 - 45 minutes</h4>
         <h4>Cart Items</h4>
         <ion-card *ngFor="let item of items">

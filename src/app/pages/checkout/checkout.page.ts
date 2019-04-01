@@ -66,6 +66,10 @@ export class CheckoutPage implements OnInit {
     this.router.navigateByUrl("/restaurants");
   }
 
+  moreItems() {
+    this.router.navigateByUrl(`restaurants/${this.restaurant.id}`);
+  }
+
   getMissingFields() {
     return _.pickBy(this, item => !item);
   }
