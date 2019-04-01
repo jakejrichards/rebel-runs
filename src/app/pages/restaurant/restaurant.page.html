@@ -28,7 +28,13 @@
         <h2>Menu</h2>
         <ion-list>
           <ion-item *ngFor="let item of items">
-            <ion-label>{{ item.name }} - ${{ item.price }}</ion-label>
+            <ion-img
+              style="height: 50px; width: 75px; margin: 10px; margin-left: 0px;"
+              [src]="item.img"
+            ></ion-img>
+            <ion-label
+              >{{ item.name }} - <b>${{ item.price }}</b></ion-label
+            >
             <ion-button (click)="onSelect(item)">Add to Cart</ion-button>
           </ion-item>
         </ion-list>
