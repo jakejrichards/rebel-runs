@@ -17,7 +17,7 @@ export interface Restaurant {
 
 export interface Item {
   name: string;
-  price: string;
+  price: number;
   description: string;
   restaurant_id: string;
   owner_id: string;
@@ -105,9 +105,6 @@ export class RestaurantService {
         }))
       );
   }
-
- 
-
 
   getRestaurants(): Observable<Restaurant[]> {
     return this.restaurants.snapshotChanges().pipe(
