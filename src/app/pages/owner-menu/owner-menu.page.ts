@@ -7,22 +7,19 @@ import {
 } from "src/app/services/restaurant.service";
 import { Router } from "@angular/router";
 
-
 @Component({
-  selector: 'app-owner-menu',
-  templateUrl: './owner-menu.page.html',
-  styleUrls: ['./owner-menu.page.scss'],
+  selector: "app-owner-menu",
+  templateUrl: "./owner-menu.page.html",
+  styleUrls: ["./owner-menu.page.scss"]
 })
-
 export class OwnerMenuPage implements OnInit {
-  items: Item [] = [];
+  items: Item[] = [];
   restaurant: Restaurant = {
-    id:"",    
+    id: "",
     img: "",
     name: "",
     owner_id: ""
-  }
- 
+  };
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -31,7 +28,6 @@ export class OwnerMenuPage implements OnInit {
   ) {}
 
   createItem = (id: string) => {
-    
     this.router.navigateByUrl(`/owner-menu/${id}/create-item`);
   };
 
@@ -44,7 +40,9 @@ export class OwnerMenuPage implements OnInit {
         });
     });
     this.restaurantService.getRestaurantsItems().subscribe(items => {
-      this.items = items;
+      this.items = items.filter(
+        item => item.restaurant_id === this.restaurant.id
+      );
     });
   }
 }

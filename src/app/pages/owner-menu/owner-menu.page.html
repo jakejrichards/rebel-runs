@@ -4,7 +4,7 @@
       <ion-back-button></ion-back-button>
     </ion-buttons>
     <ion-title>{{ restaurant.name }} (Owner: Menu)</ion-title>
-    <ion-button slot= "end" (click)="createItem(restaurant.id)">
+    <ion-button slot="end" (click)="createItem(restaurant.id)">
       Add Item
     </ion-button>
   </ion-toolbar>
@@ -14,35 +14,31 @@
   <ion-grid>
     <ion-row>
       <ion-col size="4">
-    
         <ion-img [src]="restaurant.img"></ion-img>
       </ion-col>
       <ion-col size="8">
         <h2>Menu</h2>
-       
-        
+
         <ion-row>
           <ion-col size="3" *ngFor="let item of items">
             <ion-card>
-              
               <ion-card-content>
-                  <ion-item>
-                      <ion-label> Name: {{ items.collection.name }}</ion-label>
-                    </ion-item>
-            
-                    <ion-text>
-                      <p>Description: {{ items.description }} <p>
-                    </ion-text>
-            
-                    <ion-text>
-                      <p> Price: {{ items.price }}</p>
-                    </ion-text>
-            
-                   
+                <ion-item>
+                  <ion-label> Name: {{ item.name }}</ion-label>
+                </ion-item>
+
+                <ion-text>
+                  <p>Description: {{ item.description }}</p>
+                  <p></p
+                ></ion-text>
+
+                <ion-text>
+                  <p>Price: {{ item.price }}</p>
+                </ion-text>
+
                 <ion-text>
                   <p>owner_id: {{ restaurant.owner_id }}</p>
                 </ion-text>
-                
               </ion-card-content>
             </ion-card>
           </ion-col>
