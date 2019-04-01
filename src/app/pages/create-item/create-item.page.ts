@@ -41,6 +41,7 @@ export class CreateItemPage implements OnInit {
           name: this.name,
           description: this.description,
           price: this.price,
+          img: this.img || this.defaultImg,
           owner_id: `owner.${this.authService.user.uid}`,
           restaurant_id: this.restaurant.id
         })

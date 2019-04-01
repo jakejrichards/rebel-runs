@@ -21,6 +21,7 @@ export interface Item {
   description: string;
   restaurant_id: string;
   owner_id: string;
+  img: string;
 }
 
 export interface Order {

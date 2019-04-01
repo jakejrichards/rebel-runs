@@ -22,23 +22,21 @@
         <ion-row>
           <ion-col size="3" *ngFor="let item of items">
             <ion-card>
-              <ion-card-content>
+            <img [src]="item.img" />
+            <ion-card-content>
+                 
                 <ion-item>
-                  <ion-label> Name: {{ item.name }}</ion-label>
+                  <ion-label> {{ item.name }} </ion-label>
                 </ion-item>
 
                 <ion-text>
                   <p>Description: {{ item.description }}</p>
-                  <p></p
-                ></ion-text>
-
-                <ion-text>
-                  <p>Price: {{ item.price }}</p>
                 </ion-text>
 
                 <ion-text>
-                  <p>owner_id: {{ restaurant.owner_id }}</p>
+                  <p>Price: ${{ item.price }}</p>
                 </ion-text>
+
               </ion-card-content>
             </ion-card>
           </ion-col>
