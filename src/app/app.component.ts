@@ -11,6 +11,8 @@ import { AuthService } from "./services/auth.service";
   templateUrl: "app.component.html"
 })
 export class AppComponent {
+  logoutButtonClass: "logout" | "hidden" = "logout";
+
   constructor(
     private authService: AuthService,
     private platform: Platform,
@@ -30,5 +32,10 @@ export class AppComponent {
     this.statusBar.styleDefault();
     this.splashScreen.show();
     this.splashScreen.hide();
+  }
+
+  logout() {
+    this.authService.logout();
+    this.router.navigateByUrl("/login");
   }
 }

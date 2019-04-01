@@ -5,6 +5,7 @@ import {
   RestaurantService
 } from "src/app/services/restaurant.service";
 import { CheckoutService } from "src/app/services/checkout.service";
+import { ToastController } from "@ionic/angular";
 
 @Component({
   selector: "app-restaurant",
@@ -25,7 +26,8 @@ export class RestaurantPage implements OnInit {
     private activatedRoute: ActivatedRoute,
     private checkoutService: CheckoutService,
     private restaurantService: RestaurantService,
-    private router: Router
+    private router: Router,
+    private toastController: ToastController
   ) {}
 
   ngOnInit() {
@@ -57,7 +59,14 @@ export class RestaurantPage implements OnInit {
     this.router.navigateByUrl("/checkout");
   }
 
-  onSelect = (item: any) => {
+  onSelect = async (item: any) => {
+    const toast = await this.toastController.create({
+      message: "Item added to cart.",
+      duration: 3000,
+      color: "tertiary",
+      position: "bottom"
+    });
+    toast.present();
     this.checkoutService.addItem({
       ...item,
       restaurant_id: this.restaurant.id
