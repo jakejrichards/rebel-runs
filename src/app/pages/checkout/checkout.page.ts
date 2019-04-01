@@ -7,7 +7,7 @@ import {
 } from "src/app/services/restaurant.service";
 import { Router } from "@angular/router";
 import { AuthService } from "src/app/services/auth.service";
-import { AlertController } from "@ionic/angular";
+import { AlertController, ToastController } from "@ionic/angular";
 
 @Component({
   selector: "app-checkout",
@@ -36,7 +36,8 @@ export class CheckoutPage implements OnInit {
     private authService: AuthService,
     private checkoutService: CheckoutService,
     private restaurantService: RestaurantService,
-    private router: Router
+    private router: Router,
+    private toastController: ToastController
   ) {}
 
   ngOnInit() {
@@ -79,23 +80,33 @@ export class CheckoutPage implements OnInit {
       await alert.present();
       return;
     }
-    return this.restaurantService.createOrder({
-      customer: {
-        firstName: this.firstName,
-        lastName: this.lastName
-      },
-      address: {
-        line1: this.addressLine1,
-        line2: this.addressLine2,
-        city: this.city,
-        state: this.state,
-        zip: parseInt(this.zip)
-      },
-      items: this.items,
-      total: this.total,
-      customer_id: `customer.${this.authService.user.uid}`,
-      restaurant_id: this.restaurant.id,
-      placed_at: new Date().toISOString()
-    });
+    return this.restaurantService
+      .createOrder({
+        customer: {
+          firstName: this.firstName,
+          lastName: this.lastName
+        },
+        address: {
+          line1: this.addressLine1,
+          line2: this.addressLine2,
+          city: this.city,
+          state: this.state,
+          zip: parseInt(this.zip)
+        },
+        items: this.items,
+        total: this.total,
+        customer_id: `customer.${this.authService.user.uid}`,
+        restaurant_id: this.restaurant.id,
+        placed_at: new Date().toISOString()
+      })
+      .then(async () => {
+        this.items = [];
+        const toast = await this.toastController.create({
+          message: "Order Submitted",
+          duration: 10000,
+          color: "success"
+        });
+        return toast.present();
+      });
   }
 }
