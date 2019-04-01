@@ -3,14 +3,15 @@ ion-content {
     center / cover;
 }
 h1 {
-  font-size: 3.0em;
+  font-size: 3em;
   color: #c70909;
 }
 
 h2 {
   font-size: 2em;
-  color:navy;
+  color: navy;
 }
+
 .box {
   background: white;
   width: 300px;
@@ -19,15 +20,20 @@ h2 {
   padding: 0px 0px 70px 0px;
   border: #2980b9 4px solid;
   position: absolute;
-  top:50%;
-  left:50%;
-  transform: translate(-50%,-50%);
-
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
-.boxContainer{
-  position: absolute;
-  top:50%;
-  left:50%;
-  transform: translate(-50%,-50%);
 
+.account-type-select {
+  background-color: 1px solid #d7d7d7;
+  border: 1px solid #ccc;
+  margin: 10px;
+}
+
+.boxContainer {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
