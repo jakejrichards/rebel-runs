@@ -28,6 +28,6 @@ export class CreateRestaurantPage implements OnInit {
         img: this.img || this.defaultImg,
         owner_id: `owner.${this.authService.user.uid}`
       })
-      .then(() => this.router.navigateByUrl("/restaurants"));
+      .then(() => this.router.navigateByUrl("/owner"));
   };
 }
