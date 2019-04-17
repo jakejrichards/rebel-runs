@@ -1,5 +1,10 @@
 import { Component, OnInit } from "@angular/core";
-import { RestaurantService, Order } from "src/app/services/restaurant.service";
+import {
+  RestaurantService,
+  Order,
+  Restaurant
+} from "src/app/services/restaurant.service";
+import { AuthService } from "src/app/services/auth.service";
 
 @Component({
   selector: "app-driver",
@@ -7,22 +12,47 @@ import { RestaurantService, Order } from "src/app/services/restaurant.service";
   styleUrls: ["./driver.page.scss"]
 })
 export class DriverPage implements OnInit {
-  orders = [];
+  orders: Order[] = [];
+  restaurants: Restaurant[] = [];
 
-  constructor(private restaurantService: RestaurantService) {}
+  constructor(
+    private restaurantService: RestaurantService,
+    private authService: AuthService
+  ) {}
 
-  ngOnInit() {
+  claimOrder = (order_id: string) => {
+    return this.restaurantService.claimOrder(
+      order_id,
+      this.authService.user.uid
+    );
+  };
+
+  updateOrder = (order: Order) => {
+    this.restaurantService.updateOrder(order);
+  };
+
+  unclaimedOrders = () => {
+    return this.orders.filter(order => !order.driver_id);
+  };
+
+  myOrders = () => {
+    return this.orders.filter(
+      order => order.driver_id === this.authService.user.uid
+    );
+  };
+
+  async ngOnInit() {
     this.restaurantService.getOrders().subscribe(orders => {
-      return orders.forEach(order => {
-        return this.restaurantService
-          .getRestaurant(order.restaurant_id)
-          .forEach(restaurant => {
-            this.orders.push({
-              ...order,
-              restaurant
-            });
-          });
-      });
+      this.orders = orders.map(order => ({
+        ...order,
+        restaurant:
+          this.restaurants.find(
+            restaurant => restaurant.id === order.restaurant_id
+          ) || ({} as any)
+      }));
+    });
+    this.restaurantService.getRestaurants().subscribe(restaurants => {
+      this.restaurants = restaurants;
     });
   }
 }

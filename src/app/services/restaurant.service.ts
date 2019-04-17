@@ -5,6 +5,7 @@ import {
 } from "@angular/fire/firestore";
 import { Observable } from "rxjs";
 import { map } from "rxjs/operators";
+import * as _ from "lodash";
 
 type Omit<T, K> = Pick<T, Exclude<keyof T, K>>;
 
@@ -31,6 +32,7 @@ export interface Order {
     firstName: string;
     lastName: string;
   };
+  restaurant?: Restaurant;
   address: {
     line1: string;
     line2: string;
@@ -40,6 +42,7 @@ export interface Order {
   };
   customer_id: string;
   restaurant_id: string;
+  driver_id: string;
   total: number;
 }
 
@@ -81,6 +84,14 @@ export class RestaurantService {
         }))
       )
     );
+  }
+
+  claimOrder(order_id: string, driver_id: string) {
+    this.orders.doc<Order>(order_id).update({ driver_id });
+  }
+
+  updateOrder(order: Order) {
+    return this.orders.doc((order as any).id).set(_.omit(order, ["id"]));
   }
 
   getOrders() {

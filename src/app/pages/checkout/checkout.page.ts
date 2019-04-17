@@ -108,7 +108,8 @@ export class CheckoutPage implements OnInit {
         total: this.total,
         customer_id: `customer.${this.authService.user.uid}`,
         restaurant_id: this.restaurant.id,
-        placed_at: new Date().toISOString()
+        placed_at: new Date().toISOString(),
+        driver_id: ""
       })
       .then(async () => {
         this.items = [];

@@ -9,7 +9,7 @@
     <ion-row>
       <ion-col>
         <h1>Orders Ready to Deliver</h1>
-        <ion-card *ngFor="let order of orders">
+        <ion-card *ngFor="let order of unclaimedOrders()">
           <ion-card-header>
             <ion-card-title>{{ order.restaurant.name }}</ion-card-title>
             <ion-card-subtitle>Ready for pickup in 5 minutes</ion-card-subtitle>
@@ -27,11 +27,47 @@
               {{ order.address.zip }}</ion-text
             >
           </ion-card-content>
-          <ion-button expand="block">Claim</ion-button>
+          <ion-button (click)="claimOrder(order.id)" expand="block"
+            >Claim</ion-button
+          >
         </ion-card>
       </ion-col>
       <ion-col>
         <h1>Your Orders</h1>
+        <ion-card *ngFor="let order of myOrders()">
+          <ion-card-header>
+            <ion-card-title>{{ order.restaurant.name }}</ion-card-title>
+            <ion-card-subtitle>Ready for pickup in 5 minutes</ion-card-subtitle>
+          </ion-card-header>
+          <ion-card-content>
+            <ion-text
+              >{{ order.customer.firstName }}
+              {{ order.customer.lastName }}</ion-text
+            ><br />
+            <ion-text>{{ order.address.line1 }}</ion-text>
+            <ion-text>{{ order.address.line2 }}</ion-text
+            ><br />
+            <ion-text
+              >{{ order.address.city }}, {{ order.address.state }}
+              {{ order.address.zip }}</ion-text
+            >
+            <ion-select
+              (ionChange)="updateOrder(order)"
+              [(ngModel)]="order.status"
+              [ngModelOptions]="{ standalone: true }"
+              placeholder="Status"
+            >
+              <ion-select-option value="preparing">Preparing</ion-select-option>
+              <ion-select-option value="ready"
+                >Ready For Delivery</ion-select-option
+              >
+              <ion-select-option value="delivering"
+                >On the way</ion-select-option
+              >
+              <ion-select-option value="delivered">Delivered</ion-select-option>
+            </ion-select>
+          </ion-card-content>
+        </ion-card>
       </ion-col>
     </ion-row>
   </ion-grid>
