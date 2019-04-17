@@ -74,7 +74,7 @@ export class CheckoutPage implements OnInit {
   }
 
   getMissingFields() {
-    return _.pickBy(this, item => !item);
+    return _.omit(_.pickBy(this, item => !item), "addressLine2");
   }
 
   remove(item: any) {
@@ -104,6 +104,7 @@ export class CheckoutPage implements OnInit {
           state: this.state,
           zip: parseInt(this.zip)
         },
+        status: "preparing",
         items: this.items,
         total: this.total,
         customer_id: `customer.${this.authService.user.uid}`,

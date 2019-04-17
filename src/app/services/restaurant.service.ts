@@ -28,6 +28,7 @@ export interface Item {
 export interface Order {
   placed_at: string;
   items: Item[];
+  status: string;
   customer: {
     firstName: string;
     lastName: string;

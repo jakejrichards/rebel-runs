@@ -24,7 +24,7 @@
       <ion-label>View</ion-label>
     </ion-item>
     <ion-item *ngFor="let order of orders">
-      <ion-label>Delivered</ion-label>
+      <ion-label>{{ order.status }}</ion-label>
       <ion-label>{{ order.placed_at }}</ion-label>
       <ion-label>{{ order.restaurant.name }}</ion-label>
       <ion-label>{{ order.items_text }}</ion-label>
