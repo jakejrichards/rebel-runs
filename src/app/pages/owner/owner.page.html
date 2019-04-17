@@ -21,20 +21,10 @@
       <ion-col size="3" *ngFor="let restaurant of restaurants">
         <ion-card>
           <ion-card-header>
-            <ion-card-subtitle>Time to delivery: 35 minutes</ion-card-subtitle>
-          
             <ion-card-title>{{ restaurant.name }}</ion-card-title>
-            
           </ion-card-header>
           <img [src]="restaurant.img" />
           <ion-card-content>
-            <ion-text>
-              <h2>Open 9AM - 7PM</h2>
-            </ion-text>
-            <ion-text>
-              <p>owner_id: {{ restaurant.owner_id }}</p>
-            
-            </ion-text>
             <ion-button expand="full" (click)="open(restaurant.id)"
               >View</ion-button>
           </ion-card-content>
