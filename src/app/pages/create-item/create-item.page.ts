@@ -16,6 +16,7 @@ export class CreateItemPage implements OnInit {
   name = "";
   description = "";
   price = "";
+  cooktime = "";
   restaurant: Restaurant;
 
   defaultImg = "https://place-hold.it/300x200";
@@ -42,6 +43,7 @@ export class CreateItemPage implements OnInit {
         name: this.name,
         description: this.description,
         price: Math.round(parseFloat(this.price) * 100) / 100,
+        cooktime: Math.round(parseFloat(this.cooktime) *100) / 100,
         img: this.img || this.defaultImg,
         owner_id: `owner.${this.authService.user.uid}`,
         restaurant_id: this.restaurant.id

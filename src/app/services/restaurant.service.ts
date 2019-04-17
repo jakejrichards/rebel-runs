@@ -19,10 +19,13 @@ export interface Restaurant {
 export interface Item {
   name: string;
   price: number;
+  cooktime : number; 
   description: string;
   restaurant_id: string;
   owner_id: string;
   img: string;
+  
+  
 }
 
 export interface Order {
