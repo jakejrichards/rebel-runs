@@ -10,6 +10,9 @@
       <ion-button (click)="myOrders()">
         <ion-icon name="list"></ion-icon> My Orders
       </ion-button>
+      <ion-button (click)="myMessages()">
+        <ion-icon name="mail"></ion-icon> Messages {{ messages.length }}
+      </ion-button>
       <ion-button (click)="checkout()">
         <ion-icon name="cart"></ion-icon> Checkout {{ numItemsInCheckout }}
       </ion-button>

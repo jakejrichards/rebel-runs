@@ -23,7 +23,8 @@ const routes: Routes = [
   { path: 'checkout', loadChildren: './pages/checkout/checkout.module#CheckoutPageModule' },
   { path: 'my-orders', loadChildren: './pages/my-orders/my-orders.module#MyOrdersPageModule' },
   { path: 'owner-menu/:id/create-item', loadChildren: './pages/create-item/create-item.module#CreateItemPageModule' },
-  { path: 'owner-menu/:id', loadChildren: './pages/owner-menu/owner-menu.module#OwnerMenuPageModule' }
+  { path: 'owner-menu/:id', loadChildren: './pages/owner-menu/owner-menu.module#OwnerMenuPageModule' },
+  { path: 'messages', loadChildren: './pages/messages/messages.module#MessagesPageModule' }
 ];
 
 @NgModule({

@@ -16,16 +16,20 @@ export interface Restaurant {
   owner_id: string;
 }
 
+export interface Message {
+  user_id: string;
+  text: string;
+  created_at: string;
+}
+
 export interface Item {
   name: string;
   price: number;
-  cooktime : number; 
+  cooktime: number;
   description: string;
   restaurant_id: string;
   owner_id: string;
   img: string;
-  
-  
 }
 
 export interface Order {
@@ -54,6 +58,7 @@ export interface Order {
   providedIn: "root"
 })
 export class RestaurantService {
+  messages: AngularFirestoreCollection<Message>;
   orders: AngularFirestoreCollection<Order>;
   restaurants: AngularFirestoreCollection<Restaurant>;
   items: AngularFirestoreCollection<Item>;
@@ -62,6 +67,7 @@ export class RestaurantService {
     this.orders = db.collection("orders");
     this.restaurants = db.collection("restaurants");
     this.items = db.collection("items");
+    this.messages = db.collection("messages");
   }
 
   createOrder(order: Order) {
@@ -81,6 +87,17 @@ export class RestaurantService {
 
   getRestaurantsItems(): Observable<Item[]> {
     return this.items.snapshotChanges().pipe(
+      map(changes =>
+        changes.map(({ payload: { doc } }) => ({
+          ...doc.data(),
+          id: doc.id
+        }))
+      )
+    );
+  }
+
+  getMessages(): Observable<Message[]> {
+    return this.messages.snapshotChanges().pipe(
       map(changes =>
         changes.map(({ payload: { doc } }) => ({
           ...doc.data(),
