@@ -12,11 +12,24 @@
 <ion-content padding>
   <ion-item>
     <ion-label>Name</ion-label>
-    <ion-input [(ngModel)]="name" placeholder="Restaurant Name"></ion-input>
+    <ion-input [(ngModel)]="name" ></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label>Address</ion-label>
+    <ion-input [(ngModel)]="address"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label>Contact Number</ion-label>
+    <ion-input [(ngModel)]="pnumber"></ion-input>
   </ion-item>
   <ion-item>
     <ion-label>Image URL</ion-label>
-    <ion-input [(ngModel)]="img" [placeholder]="defaultImg"></ion-input>
+    <ion-input [(ngModel)]="img" ></ion-input>
   </ion-item>
+
+
+
   <ion-button (click)="create()" expand="full">Create</ion-button>
 </ion-content>

@@ -18,6 +18,8 @@ export class OwnerMenuPage implements OnInit {
     id: "",
     img: "",
     name: "",
+    pnumber: "",
+    address: "",
     owner_id: ""
   };
 

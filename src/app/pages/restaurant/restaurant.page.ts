@@ -18,6 +18,8 @@ export class RestaurantPage implements OnInit {
   restaurant: Restaurant = {
     id: "",
     img: "",
+    address:"",
+    pnumber:"",
     name: "",
     owner_id: ""
   };

@@ -10,6 +10,8 @@ import { Router } from "@angular/router";
 })
 export class CreateRestaurantPage implements OnInit {
   img = "";
+  pnumber = "";
+  address = "";
   name = "";
   defaultImg = "https://place-hold.it/300x200";
 
@@ -26,6 +28,8 @@ export class CreateRestaurantPage implements OnInit {
       .createRestaurant({
         name: this.name,
         img: this.img || this.defaultImg,
+        address: this.address,
+        pnumber:this.pnumber,
         owner_id: `owner.${this.authService.user.uid}`
       })
       .then(() => this.router.navigateByUrl("/owner"));

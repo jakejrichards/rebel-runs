@@ -21,7 +21,10 @@ export class CheckoutPage implements OnInit {
     id: "",
     owner_id: "",
     img: "",
+    address: "",
+    pnumber: "",
     name: ""
+
   };
   firstName = "";
   lastName = "";
