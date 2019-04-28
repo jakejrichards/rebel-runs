@@ -18,13 +18,36 @@ const routes: Routes = [
     path: "restaurants/:id",
     loadChildren: "./pages/restaurant/restaurant.module#RestaurantPageModule"
   },
-  { path: 'owner', loadChildren: './pages/owner/owner.module#OwnerPageModule' },
-  { path: 'driver', loadChildren: './pages/driver/driver.module#DriverPageModule' },
-  { path: 'checkout', loadChildren: './pages/checkout/checkout.module#CheckoutPageModule' },
-  { path: 'my-orders', loadChildren: './pages/my-orders/my-orders.module#MyOrdersPageModule' },
-  { path: 'owner-menu/:id/create-item', loadChildren: './pages/create-item/create-item.module#CreateItemPageModule' },
-  { path: 'owner-menu/:id', loadChildren: './pages/owner-menu/owner-menu.module#OwnerMenuPageModule' },
-  { path: 'messages', loadChildren: './pages/messages/messages.module#MessagesPageModule' }
+  { path: "owner", loadChildren: "./pages/owner/owner.module#OwnerPageModule" },
+  {
+    path: "driver",
+    loadChildren: "./pages/driver/driver.module#DriverPageModule"
+  },
+  {
+    path: "checkout",
+    loadChildren: "./pages/checkout/checkout.module#CheckoutPageModule"
+  },
+  {
+    path: "my-orders",
+    loadChildren: "./pages/my-orders/my-orders.module#MyOrdersPageModule"
+  },
+  {
+    path: "owner-menu/:id/create-item",
+    loadChildren: "./pages/create-item/create-item.module#CreateItemPageModule"
+  },
+  {
+    path: "owner-menu/:id",
+    loadChildren: "./pages/owner-menu/owner-menu.module#OwnerMenuPageModule"
+  },
+  {
+    path: "messages",
+    loadChildren: "./pages/messages/messages.module#MessagesPageModule"
+  },
+  {
+    path: "edit-restaurant/:id",
+    loadChildren:
+      "./pages/edit-restaurant/edit-restaurant.module#EditRestaurantPageModule"
+  }
 ];
 
 @NgModule({

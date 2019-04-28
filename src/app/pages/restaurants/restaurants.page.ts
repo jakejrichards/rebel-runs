@@ -67,6 +67,10 @@ export class RestaurantsPage implements OnInit {
     this.router.navigateByUrl("/checkout");
   };
 
+  edit = (id: string) => {
+    this.router.navigateByUrl(`/edit-restaurant/${id}`);
+  };
+
   open = (id: string) => {
     this.router.navigateByUrl(`/restaurants/${id}`);
   };

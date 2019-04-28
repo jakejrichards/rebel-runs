@@ -1,0 +1,42 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Edit Restaurant</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-item>
+    <ion-label>Name</ion-label>
+    <ion-input [(ngModel)]="restaurant.name"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label>Cuisine Type</ion-label>
+    <ion-select
+      [(ngModel)]="restaurant.cuisine_type"
+      [ngModelOptions]="{ standalone: true }"
+    >
+      <ion-select-option value="american">American</ion-select-option>
+      <ion-select-option value="mexican">Mexican</ion-select-option>
+      <ion-select-option value="chinese">Chinese</ion-select-option>
+      <ion-select-option value="indian">Indian</ion-select-option>
+      <ion-select-option value="italian">Italian</ion-select-option>
+    </ion-select>
+  </ion-item>
+
+  <ion-item>
+    <ion-label>Address</ion-label>
+    <ion-input [(ngModel)]="restaurant.address"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label>Contact Number</ion-label>
+    <ion-input [(ngModel)]="restaurant.pnumber"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label>Image URL</ion-label>
+    <ion-input [(ngModel)]="restaurant.img"></ion-input>
+  </ion-item>
+
+  <ion-button (click)="save()" expand="full">Save</ion-button>
+</ion-content>

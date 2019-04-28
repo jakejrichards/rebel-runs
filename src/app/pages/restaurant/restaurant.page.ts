@@ -18,10 +18,11 @@ export class RestaurantPage implements OnInit {
   restaurant: Restaurant = {
     id: "",
     img: "",
-    address:"",
-    pnumber:"",
+    address: "",
+    pnumber: "",
     name: "",
-    owner_id: ""
+    owner_id: "",
+    cuisine_type: ""
   };
 
   numItemsInCheckout = 0;

@@ -118,6 +118,10 @@ export class RestaurantService {
     return this.orders.doc((order as any).id).set(_.omit(order, ["id"]));
   }
 
+  updateRestaurant(restaurant: Restaurant) {
+    return this.restaurants.doc(restaurant.id).set(_.omit(restaurant, ["id"]));
+  }
+
   getOrders() {
     return this.orders.snapshotChanges().pipe(
       map(changes =>

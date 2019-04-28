@@ -1,12 +1,14 @@
-
-import { Component, OnInit } from '@angular/core';
-import {Restaurant, RestaurantService } from "../../services/restaurant.service";
+import { Component, OnInit } from "@angular/core";
+import {
+  Restaurant,
+  RestaurantService
+} from "../../services/restaurant.service";
 import { Router } from "@angular/router";
 
 @Component({
-  selector: 'app-owner',
-  templateUrl: './owner.page.html',
-  styleUrls: ['./owner.page.scss'],
+  selector: "app-owner",
+  templateUrl: "./owner.page.html",
+  styleUrls: ["./owner.page.scss"]
 })
 export class OwnerPage implements OnInit {
   restaurants: Restaurant[] = [];
@@ -28,5 +30,9 @@ export class OwnerPage implements OnInit {
 
   open = (id: string) => {
     this.router.navigateByUrl(`/owner-menu/${id}`);
+  };
+
+  edit = (id: string) => {
+    this.router.navigateByUrl(`/edit-restaurant/${id}`);
   };
 }
