@@ -23,8 +23,8 @@ export class CheckoutPage implements OnInit {
     img: "",
     address: "",
     pnumber: "",
-    name: ""
-
+    name: "",
+    cuisine_type: ""
   };
   firstName = "";
   lastName = "";
