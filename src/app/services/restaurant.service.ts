@@ -85,7 +85,15 @@ export class RestaurantService {
     return this.items.add(restaurantData);
   }
   getRestaurantItem(id: string) {
-    return this.items.doc<Item>(id);
+    return this.items
+      .doc<Item>(id)
+      .snapshotChanges()
+      .pipe(
+        map(({ payload }) => ({
+          id: payload.id,
+          ...payload.data()
+        }))
+      );
   }
 
   getRestaurantsItems(): Observable<Item[]> {
@@ -112,6 +120,14 @@ export class RestaurantService {
 
   claimOrder(order_id: string, driver_id: string) {
     this.orders.doc<Order>(order_id).update({ driver_id });
+  }
+
+  updateItem(item: Item) {
+    return this.items.doc((item as any).id).set(_.omit(item, ["id"]));
+  }
+
+  deleteItem(id: string) {
+    return this.items.doc(id).delete();
   }
 
   updateOrder(order: Order) {

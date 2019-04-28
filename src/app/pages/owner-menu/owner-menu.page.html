@@ -1,8 +1,8 @@
 <ion-header>
   <ion-toolbar>
-      <ion-buttons slot="start">
-          <ion-back-button defaultHref="home"></ion-back-button>
-        </ion-buttons>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="home"></ion-back-button>
+    </ion-buttons>
     <ion-title>{{ restaurant.name }} (Owner: Menu)</ion-title>
     <ion-button slot="end" (click)="createItem(restaurant.id)">
       Add Item
@@ -15,41 +15,51 @@
     <ion-row>
       <ion-col size="4">
         <ion-img [src]="restaurant.img"></ion-img>
-        
-          <p> {{ restaurant.address }} </p>
-          <p> {{ restaurant.pnumber }} </p>
-       
+        <p>{{ restaurant.address }}</p>
+        <p>{{ restaurant.pnumber }}</p>
       </ion-col>
       <ion-col size="8">
         <h2>Menu</h2>
 
         <ion-row>
-          <ion-col 
-          sizeXs="12"
-          sizeSm="6"
-          sizeMd="4"
-          sizeLg="3"
-          sizeXl="3" *ngFor="let item of items">
+          <ion-col
+            sizeXs="12"
+            sizeSm="6"
+            sizeMd="4"
+            sizeLg="3"
+            sizeXl="3"
+            *ngFor="let item of items"
+          >
             <ion-card>
-            <img [src]="item.img" />
-            <ion-card-content>
-                 
-                <ion-item>
-                  <ion-label> {{ item.name }} </ion-label>
-                </ion-item>
-
+              <img [src]="item.img" />
+              <ion-card-content>
+                <h1>{{ item.name }}</h1>
                 <ion-text>
-                  <p>{{ item.description }}</p>
+                  <p><b>Description:</b> {{ item.description }}</p>
                 </ion-text>
 
                 <ion-text>
-                  <p>Price: ${{ item.price }}</p>
+                  <p><b>Price:</b> ${{ item.price }}</p>
                 </ion-text>
 
                 <ion-text>
-                  <p>Cooktime: {{ item.cooktime }} minutes</p>
+                  <p><b>Cooktime:</b> {{ item.cooktime }} minutes</p>
                 </ion-text>
-    
+                <ion-row>
+                  <ion-col size="6">
+                    <ion-button (click)="editItem(item.id)" expand="full"
+                      >Edit</ion-button
+                    >
+                  </ion-col>
+                  <ion-col size="6">
+                    <ion-button
+                      (click)="deleteItem(item.id)"
+                      color="danger"
+                      expand="full"
+                      >Delete</ion-button
+                    >
+                  </ion-col>
+                </ion-row>
               </ion-card-content>
             </ion-card>
           </ion-col>

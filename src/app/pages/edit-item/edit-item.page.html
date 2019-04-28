@@ -1,0 +1,33 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>edit-item</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-item>
+    <ion-label>Name:</ion-label>
+    <ion-input [(ngModel)]="item.name"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label>Description:</ion-label>
+    <ion-input [(ngModel)]="item.description"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label>Price:</ion-label>
+    <ion-input [(ngModel)]="item.price"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label>Cooktime:</ion-label>
+    <ion-input [(ngModel)]="item.cooktime"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label>Image URL:</ion-label>
+    <ion-input [(ngModel)]="item.img" [placeholder]="defaultImg"></ion-input>
+  </ion-item>
+  <ion-button (click)="save()" expand="full">Save</ion-button>
+</ion-content>

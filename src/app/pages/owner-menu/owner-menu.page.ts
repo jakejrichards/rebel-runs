@@ -20,7 +20,8 @@ export class OwnerMenuPage implements OnInit {
     name: "",
     pnumber: "",
     address: "",
-    owner_id: ""
+    owner_id: "",
+    cuisine_type: ""
   };
 
   constructor(
@@ -31,6 +32,14 @@ export class OwnerMenuPage implements OnInit {
 
   createItem = (id: string) => {
     this.router.navigateByUrl(`/owner-menu/${id}/create-item`);
+  };
+
+  editItem = (id: string) => {
+    this.router.navigateByUrl(`edit-item/${id}`);
+  };
+
+  deleteItem = (id: string) => {
+    this.restaurantService.deleteItem(id);
   };
 
   ngOnInit() {
