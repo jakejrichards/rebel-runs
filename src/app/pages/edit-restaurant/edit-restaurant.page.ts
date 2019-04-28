@@ -18,7 +18,9 @@ export class EditRestaurantPage implements OnInit {
     pnumber: "",
     name: "",
     owner_id: "",
-    cuisine_type: ""
+    cuisine_type: "",
+    rating: 0,
+    price: 1
   };
 
   constructor(

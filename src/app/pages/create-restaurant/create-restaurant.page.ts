@@ -15,6 +15,8 @@ export class CreateRestaurantPage implements OnInit {
   name = "";
   defaultImg = "https://place-hold.it/300x200";
   cuisine_type = "";
+  price = 1;
+  rating = 1;
 
   constructor(
     private authService: AuthService,
@@ -32,7 +34,9 @@ export class CreateRestaurantPage implements OnInit {
         address: this.address,
         pnumber: this.pnumber,
         owner_id: `owner.${this.authService.user.uid}`,
-        cuisine_type: this.cuisine_type
+        cuisine_type: this.cuisine_type,
+        price: this.price,
+        rating: this.rating
       })
       .then(() => this.router.navigateByUrl("/owner"));
   };

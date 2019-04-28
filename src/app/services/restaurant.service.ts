@@ -17,6 +17,8 @@ export interface Restaurant {
   address: string;
   owner_id: string;
   cuisine_type: string;
+  price: number;
+  rating: number;
 }
 
 export interface Message {

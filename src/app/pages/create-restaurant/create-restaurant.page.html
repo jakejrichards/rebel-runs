@@ -14,7 +14,14 @@
     <ion-label>Name</ion-label>
     <ion-input [(ngModel)]="name"></ion-input>
   </ion-item>
-
+  <ion-item>
+    <ion-label>Price</ion-label>
+    <ion-input min="1" max="3" type="number" [(ngModel)]="price"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label>Rating</ion-label>
+    <ion-input min="1" max="5" type="number" [(ngModel)]="rating"></ion-input>
+  </ion-item>
   <ion-item>
     <ion-label>Cuisine Type</ion-label>
     <ion-select
@@ -28,12 +35,10 @@
       <ion-select-option value="italian">Italian</ion-select-option>
     </ion-select>
   </ion-item>
-
   <ion-item>
     <ion-label>Address</ion-label>
     <ion-input [(ngModel)]="address"></ion-input>
   </ion-item>
-
   <ion-item>
     <ion-label>Contact Number</ion-label>
     <ion-input [(ngModel)]="pnumber"></ion-input>
@@ -42,6 +47,5 @@
     <ion-label>Image URL</ion-label>
     <ion-input [(ngModel)]="img"></ion-input>
   </ion-item>
-
   <ion-button (click)="create()" expand="full">Create</ion-button>
 </ion-content>

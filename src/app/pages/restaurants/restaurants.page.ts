@@ -20,6 +20,8 @@ export class RestaurantsPage implements OnInit {
   messages: Message[] = [];
   restaurants: Restaurant[] = [];
   cuisine_type = "all";
+  sorter: "price" | "rating" = "rating";
+  order: "asc" | "desc" = "desc";
 
   constructor(
     private checkoutService: CheckoutService,
@@ -27,6 +29,14 @@ export class RestaurantsPage implements OnInit {
     public restaurantService: RestaurantService,
     private router: Router
   ) {}
+
+  getPriceText(price: number) {
+    return _.times(price, () => "$").join("");
+  }
+
+  getRatingText(rating: number) {
+    return _.times(rating, () => "&#9733;").join("");
+  }
 
   ngOnInit() {
     this.checkoutService.items().subscribe(items => {
@@ -50,9 +60,13 @@ export class RestaurantsPage implements OnInit {
   }
 
   getRestaurants = () => {
-    return this.restaurants.filter(
-      r => this.cuisine_type === "all" || r.cuisine_type === this.cuisine_type
+    const restaurants = _.sortBy(
+      this.restaurants.filter(
+        r => this.cuisine_type === "all" || r.cuisine_type === this.cuisine_type
+      ),
+      [this.sorter]
     );
+    return this.order === "asc" ? restaurants : _.reverse(restaurants);
   };
 
   myMessages = () => {

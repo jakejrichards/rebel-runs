@@ -23,6 +23,13 @@
           <h1>{{ restaurant.name }}</h1>
         </ion-text>
         <ion-img [src]="restaurant.img"></ion-img>
+        <p>
+          Price: <b>{{ getPriceText(restaurant.price) }}</b>
+        </p>
+        <p>
+          Rating:
+          <span [innerHTML]="getRatingText(restaurant.rating)"></span>
+        </p>
         <p>{{ restaurant.address }}</p>
         <p>{{ restaurant.pnumber }}</p>
       </ion-col>

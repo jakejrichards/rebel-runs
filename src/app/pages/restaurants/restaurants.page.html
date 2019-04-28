@@ -37,6 +37,27 @@
           <ion-select-option value="italian">Italian</ion-select-option>
         </ion-select>
       </ion-col>
+      <ion-col sizeXl="9"></ion-col>
+      <ion-col sizeXl="1">
+        <ion-select
+          placeholder="Sort By"
+          [(ngModel)]="sorter"
+          [ngModelOptions]="{ standalone: true }"
+        >
+          <ion-select-option value="price">Price</ion-select-option>
+          <ion-select-option value="rating">Rating</ion-select-option>
+        </ion-select>
+      </ion-col>
+      <ion-col sizeXl="1">
+        <ion-select
+          placeholder="Sort Order"
+          [(ngModel)]="order"
+          [ngModelOptions]="{ standalone: true }"
+        >
+          <ion-select-option value="asc">Low to High</ion-select-option>
+          <ion-select-option value="desc">High to Low</ion-select-option>
+        </ion-select>
+      </ion-col>
     </ion-row>
     <ion-row>
       <ion-col
@@ -53,6 +74,13 @@
           </ion-card-header>
           <img [src]="restaurant.img" />
           <ion-card-content>
+            <p>
+              Price: <b>{{ getPriceText(restaurant.price) }}</b>
+            </p>
+            <p>
+              Rating:
+              <span [innerHTML]="getRatingText(restaurant.rating)"></span>
+            </p>
             <ion-button expand="full" (click)="open(restaurant.id)"
               >View Menu</ion-button
             >

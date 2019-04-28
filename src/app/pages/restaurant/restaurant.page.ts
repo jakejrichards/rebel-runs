@@ -1,3 +1,4 @@
+import * as _ from "lodash";
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
 import {
@@ -22,10 +23,20 @@ export class RestaurantPage implements OnInit {
     pnumber: "",
     name: "",
     owner_id: "",
-    cuisine_type: ""
+    cuisine_type: "",
+    price: 1,
+    rating: 1
   };
 
   numItemsInCheckout = 0;
+
+  getPriceText(price: number) {
+    return _.times(price, () => "$").join("");
+  }
+
+  getRatingText(rating: number) {
+    return _.times(rating, () => "&#9733;").join("");
+  }
 
   constructor(
     private activatedRoute: ActivatedRoute,

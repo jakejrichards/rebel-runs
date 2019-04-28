@@ -32,6 +32,13 @@
           <img [src]="restaurant.img" />
 
           <ion-card-content>
+            <p>
+              Price: <b>{{ getPriceText(restaurant.price) }}</b>
+            </p>
+            <p>
+              Rating:
+              <span [innerHTML]="getRatingText(restaurant.rating)"></span>
+            </p>
             <ion-row>
               <ion-col size="6"
                 ><ion-button

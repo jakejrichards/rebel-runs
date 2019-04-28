@@ -1,3 +1,4 @@
+import * as _ from "lodash";
 import { Component, OnInit } from "@angular/core";
 import {
   Restaurant,
@@ -17,6 +18,14 @@ export class OwnerPage implements OnInit {
     public restaurantService: RestaurantService,
     private router: Router
   ) {}
+
+  getPriceText(price: number) {
+    return _.times(price, () => "$").join("");
+  }
+
+  getRatingText(rating: number) {
+    return _.times(rating, () => "&#9733;").join("");
+  }
 
   ngOnInit() {
     this.restaurantService.getRestaurants().subscribe(restaurants => {

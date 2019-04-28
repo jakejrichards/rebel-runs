@@ -24,7 +24,9 @@ export class CheckoutPage implements OnInit {
     address: "",
     pnumber: "",
     name: "",
-    cuisine_type: ""
+    cuisine_type: "",
+    price: 0,
+    rating: 0
   };
   firstName = "";
   lastName = "";

@@ -21,7 +21,9 @@ export class OwnerMenuPage implements OnInit {
     pnumber: "",
     address: "",
     owner_id: "",
-    cuisine_type: ""
+    cuisine_type: "",
+    price: 1,
+    rating: 1
   };
 
   constructor(
