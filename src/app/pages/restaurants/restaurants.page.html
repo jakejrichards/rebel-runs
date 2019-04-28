@@ -23,13 +23,29 @@
 <ion-content>
   <ion-grid>
     <ion-row>
+      <ion-col sizeXl="1">
+        <ion-select
+          placeholder="Cuisine Type"
+          [(ngModel)]="cuisine_type"
+          [ngModelOptions]="{ standalone: true }"
+        >
+          <ion-select-option value="all">All Types</ion-select-option>
+          <ion-select-option value="american">American</ion-select-option>
+          <ion-select-option value="mexican">Mexican</ion-select-option>
+          <ion-select-option value="chinese">Chinese</ion-select-option>
+          <ion-select-option value="indian">Indian</ion-select-option>
+          <ion-select-option value="italian">Italian</ion-select-option>
+        </ion-select>
+      </ion-col>
+    </ion-row>
+    <ion-row>
       <ion-col
         sizeXs="12"
         sizeSm="6"
         sizeMd="4"
         sizeLg="3"
         sizeXl="3"
-        *ngFor="let restaurant of restaurants"
+        *ngFor="let restaurant of getRestaurants()"
       >
         <ion-card>
           <ion-card-header>

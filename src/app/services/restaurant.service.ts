@@ -13,9 +13,10 @@ export interface Restaurant {
   id: string;
   img: string;
   name: string;
-  pnumber:string;
-  address:string;
+  pnumber: string;
+  address: string;
   owner_id: string;
+  cuisine_type: string;
 }
 
 export interface Message {

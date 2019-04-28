@@ -19,6 +19,7 @@ export class RestaurantsPage implements OnInit {
   numItemsInCheckout = 0;
   messages: Message[] = [];
   restaurants: Restaurant[] = [];
+  cuisine_type = "all";
 
   constructor(
     private checkoutService: CheckoutService,
@@ -47,6 +48,12 @@ export class RestaurantsPage implements OnInit {
       }));
     });
   }
+
+  getRestaurants = () => {
+    return this.restaurants.filter(
+      r => this.cuisine_type === "all" || r.cuisine_type === this.cuisine_type
+    );
+  };
 
   myMessages = () => {
     this.router.navigateByUrl("/messages");

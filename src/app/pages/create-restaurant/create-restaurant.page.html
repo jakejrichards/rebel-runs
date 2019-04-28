@@ -1,18 +1,32 @@
 <ion-header>
-    <ion-toolbar>
-      <ion-title>
-        Create A Restaurant
-      </ion-title>
-      <ion-buttons slot="start">
-        <ion-back-button defaultHref="home"></ion-back-button>
-      </ion-buttons>
-    </ion-toolbar>
-  </ion-header>
-  
+  <ion-toolbar>
+    <ion-title>
+      Create A Restaurant
+    </ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="home"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
 <ion-content padding>
   <ion-item>
     <ion-label>Name</ion-label>
-    <ion-input [(ngModel)]="name" ></ion-input>
+    <ion-input [(ngModel)]="name"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label>Cuisine Type</ion-label>
+    <ion-select
+      [(ngModel)]="cuisine_type"
+      [ngModelOptions]="{ standalone: true }"
+    >
+      <ion-select-option value="american">American</ion-select-option>
+      <ion-select-option value="mexican">Mexican</ion-select-option>
+      <ion-select-option value="chinese">Chinese</ion-select-option>
+      <ion-select-option value="indian">Indian</ion-select-option>
+      <ion-select-option value="italian">Italian</ion-select-option>
+    </ion-select>
   </ion-item>
 
   <ion-item>
@@ -26,10 +40,8 @@
   </ion-item>
   <ion-item>
     <ion-label>Image URL</ion-label>
-    <ion-input [(ngModel)]="img" ></ion-input>
+    <ion-input [(ngModel)]="img"></ion-input>
   </ion-item>
-
-
 
   <ion-button (click)="create()" expand="full">Create</ion-button>
 </ion-content>
