@@ -1,8 +1,10 @@
 import * as _ from "lodash";
+import * as moment from "moment";
 import { Component, OnInit } from "@angular/core";
 import {
   Restaurant,
-  RestaurantService
+  RestaurantService,
+  Message
 } from "../../services/restaurant.service";
 import { Router } from "@angular/router";
 import { AuthService } from "src/app/services/auth.service";
@@ -14,6 +16,7 @@ import { AuthService } from "src/app/services/auth.service";
 })
 export class OwnerPage implements OnInit {
   restaurants: Restaurant[] = [];
+  messages: Message[] = [];
 
   constructor(
     private authService: AuthService,
@@ -35,7 +38,23 @@ export class OwnerPage implements OnInit {
         ({ owner_id }) => owner_id === `owner.${this.authService.user.uid}`
       );
     });
+    this.restaurantService.getMessages().subscribe(messages => {
+      console.log(messages);
+      this.messages = _.sortBy(
+        messages.filter(
+          message => message.user_id === this.authService.user.uid
+        ),
+        "created_at"
+      ).map(message => ({
+        ...message,
+        created_at: moment(message.created_at).format("LLL")
+      }));
+    });
   }
+
+  myMessages = () => {
+    this.router.navigateByUrl("/messages");
+  };
 
   viewOrders = () => {
     this.router.navigateByUrl("/owner-orders");

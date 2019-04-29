@@ -1,10 +1,14 @@
+import * as _ from "lodash";
+import * as moment from "moment";
 import { Component, OnInit } from "@angular/core";
 import {
   RestaurantService,
   Order,
-  Restaurant
+  Restaurant,
+  Message
 } from "src/app/services/restaurant.service";
 import { AuthService } from "src/app/services/auth.service";
+import { Router } from "@angular/router";
 
 @Component({
   selector: "app-driver",
@@ -14,10 +18,12 @@ import { AuthService } from "src/app/services/auth.service";
 export class DriverPage implements OnInit {
   orders: Order[] = [];
   restaurants: Restaurant[] = [];
+  messages: Message[] = [];
 
   constructor(
     private restaurantService: RestaurantService,
-    private authService: AuthService
+    private authService: AuthService,
+    private router: Router
   ) {}
 
   claimOrder = (order: Order) => {
@@ -30,6 +36,10 @@ export class DriverPage implements OnInit {
 
   unclaimedOrders = () => {
     return this.orders.filter(order => !order.driver_id);
+  };
+
+  myMessages = () => {
+    return this.router.navigateByUrl("/messages");
   };
 
   myOrders = () => {
@@ -52,6 +62,18 @@ export class DriverPage implements OnInit {
             ) || ({} as any)
         }))
         .filter(order => order.approved);
+    });
+    this.restaurantService.getMessages().subscribe(messages => {
+      console.log(messages);
+      this.messages = _.sortBy(
+        messages.filter(
+          message => message.user_id === this.authService.user.uid
+        ),
+        "created_at"
+      ).map(message => ({
+        ...message,
+        created_at: moment(message.created_at).format("LLL")
+      }));
     });
   }
 }

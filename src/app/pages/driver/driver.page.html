@@ -1,6 +1,11 @@
 <ion-header>
   <ion-toolbar>
     <ion-title>Driver</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="myMessages()">
+        <ion-icon name="mail"></ion-icon> Messages {{ messages.length }}
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
