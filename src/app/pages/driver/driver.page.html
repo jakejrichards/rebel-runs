@@ -12,7 +12,6 @@
         <ion-card *ngFor="let order of unclaimedOrders()">
           <ion-card-header>
             <ion-card-title>{{ order.restaurant.name }}</ion-card-title>
-            <ion-card-subtitle>Ready for pickup in 5 minutes</ion-card-subtitle>
           </ion-card-header>
           <ion-card-content>
             <ion-text
@@ -27,7 +26,7 @@
               {{ order.address.zip }}</ion-text
             >
           </ion-card-content>
-          <ion-button (click)="claimOrder(order.id)" expand="block"
+          <ion-button (click)="claimOrder(order)" expand="block"
             >Claim</ion-button
           >
         </ion-card>
@@ -37,7 +36,6 @@
         <ion-card *ngFor="let order of myOrders()">
           <ion-card-header>
             <ion-card-title>{{ order.restaurant.name }}</ion-card-title>
-            <ion-card-subtitle>Ready for pickup in 5 minutes</ion-card-subtitle>
           </ion-card-header>
           <ion-card-content>
             <ion-text

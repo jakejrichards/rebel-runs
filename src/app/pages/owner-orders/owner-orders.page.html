@@ -1,0 +1,47 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Your restaurant orders</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-row>
+    <ion-col size="6">
+      <h1>Pending Orders</h1>
+      <ion-card *ngFor="let order of pendingOrders()">
+        <ion-card-header>
+          <ion-card-title>{{ order.restaurant.name }}</ion-card-title>
+          <ion-card-subtitle>${{ order.total }} Order</ion-card-subtitle>
+        </ion-card-header>
+        <ion-card-content>
+          <h2>Items</h2>
+          <ion-text>{{ getItemsText(order) }}</ion-text>
+          <h2 style="margin-top: 15px">Customer</h2>
+          <ion-text
+            >{{ order.customer.firstName }}
+            {{ order.customer.lastName }}</ion-text
+          ><br />
+          <ion-text>{{ order.address.line1 }}</ion-text>
+          <ion-text>{{ order.address.line2 }}</ion-text
+          ><br />
+          <ion-text
+            >{{ order.address.city }}, {{ order.address.state }}
+            {{ order.address.zip }}</ion-text
+          >
+          <ion-row>
+            <ion-col>
+              <ion-button (click)="approve(order)" color="success" expand="full"
+                >Approve</ion-button
+              >
+            </ion-col>
+            <ion-col>
+              <ion-button (click)="reject(order)" color="danger" expand="full"
+                >Reject</ion-button
+              >
+            </ion-col>
+          </ion-row>
+        </ion-card-content>
+      </ion-card>
+    </ion-col>
+  </ion-row>
+</ion-content>

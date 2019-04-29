@@ -7,11 +7,11 @@ import {
 import { AuthService } from "src/app/services/auth.service";
 
 @Component({
-  selector: "app-driver",
-  templateUrl: "./driver.page.html",
-  styleUrls: ["./driver.page.scss"]
+  selector: "app-owner-orders",
+  templateUrl: "./owner-orders.page.html",
+  styleUrls: ["./owner-orders.page.scss"]
 })
-export class DriverPage implements OnInit {
+export class OwnerOrdersPage implements OnInit {
   orders: Order[] = [];
   restaurants: Restaurant[] = [];
 
@@ -20,29 +20,28 @@ export class DriverPage implements OnInit {
     private authService: AuthService
   ) {}
 
-  claimOrder = (order: Order) => {
-    return this.restaurantService.claimOrder(order, this.authService.user.uid);
-  };
+  approve(order: Order) {
+    return this.restaurantService.approveOrder(order);
+  }
 
-  updateOrder = (order: Order) => {
-    this.restaurantService.updateOrder(order);
-  };
+  reject(order: Order) {
+    return this.restaurantService.rejectOrder(order);
+  }
 
-  unclaimedOrders = () => {
-    return this.orders.filter(order => !order.driver_id);
-  };
+  pendingOrders() {
+    return this.orders.filter(order => !order.approved);
+  }
 
-  myOrders = () => {
-    return this.orders.filter(
-      order => order.driver_id === this.authService.user.uid
-    );
-  };
+  getItemsText(order: Order) {
+    return order.items.map(item => item.name).join(", ");
+  }
 
-  async ngOnInit() {
+  ngOnInit() {
     this.restaurantService.getRestaurants().subscribe(restaurants => {
       this.restaurants = restaurants;
     });
     this.restaurantService.getOrders().subscribe(orders => {
+      console.log(orders);
       this.orders = orders
         .map(order => ({
           ...order,
@@ -51,7 +50,10 @@ export class DriverPage implements OnInit {
               restaurant => restaurant.id === order.restaurant_id
             ) || ({} as any)
         }))
-        .filter(order => order.approved);
+        .filter(
+          order =>
+            order.restaurant.owner_id === `owner.${this.authService.user.uid}`
+        );
     });
   }
 }

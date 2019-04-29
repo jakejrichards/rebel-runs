@@ -37,6 +37,10 @@ export class OwnerPage implements OnInit {
     });
   }
 
+  viewOrders = () => {
+    this.router.navigateByUrl("/owner-orders");
+  };
+
   create = () => {
     this.router.navigateByUrl("/create-restaurant");
   };

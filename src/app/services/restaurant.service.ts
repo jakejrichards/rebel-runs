@@ -38,6 +38,7 @@ export interface Item {
 }
 
 export interface Order {
+  approved: boolean;
   placed_at: string;
   items: Item[];
   status: string;
@@ -83,6 +84,30 @@ export class RestaurantService {
         text: `${order.customer.firstName} ${
           order.customer.lastName
         } has placed a $${order.total} order for ${name}!`,
+        created_at: new Date().toISOString()
+      });
+    });
+  }
+
+  async approveOrder(order: Order) {
+    await this.orders
+      .doc<Order>((order as any).id)
+      .set({ ...order, approved: true });
+    this.getRestaurant(order.restaurant_id).forEach(({ name }) => {
+      return this.createMessage({
+        user_id: _.trimStart(order.customer_id, "customer."),
+        text: `Your order for ${name} was approved!`,
+        created_at: new Date().toISOString()
+      });
+    });
+  }
+
+  async rejectOrder(order: Order) {
+    await this.orders.doc((order as any).id).delete();
+    this.getRestaurant(order.restaurant_id).forEach(({ name }) => {
+      return this.createMessage({
+        user_id: _.trimStart(order.customer_id, "customer."),
+        text: `Your order for ${name} was rejected!`,
         created_at: new Date().toISOString()
       });
     });
@@ -137,8 +162,15 @@ export class RestaurantService {
     );
   }
 
-  claimOrder(order_id: string, driver_id: string) {
-    this.orders.doc<Order>(order_id).update({ driver_id });
+  async claimOrder(order: Order, driver_id: string) {
+    await this.orders.doc<Order>((order as any).id).update({ driver_id });
+    this.getRestaurant(order.restaurant_id).forEach(({ name }) => {
+      return this.createMessage({
+        user_id: _.trimStart(order.customer_id, "customer."),
+        text: `Your order for ${name} was picked up by the driver!`,
+        created_at: new Date().toISOString()
+      });
+    });
   }
 
   updateItem(item: Item) {

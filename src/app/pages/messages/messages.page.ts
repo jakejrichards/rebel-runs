@@ -26,15 +26,17 @@ export class MessagesPage implements OnInit {
 
   ngOnInit() {
     this.restaurantService.getMessages().subscribe(messages => {
-      this.messages = _.sortBy(
-        messages.filter(
-          message => message.user_id === this.authService.user.uid
-        ),
-        "created_at"
-      ).map(message => ({
-        ...message,
-        created_at: moment(message.created_at).format("LLL")
-      }));
+      this.messages = _.reverse(
+        _.sortBy(
+          messages.filter(
+            message => message.user_id === this.authService.user.uid
+          ),
+          "created_at"
+        ).map(message => ({
+          ...message,
+          created_at: moment(message.created_at).format("LLL")
+        }))
+      );
     });
   }
 }

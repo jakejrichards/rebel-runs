@@ -51,7 +51,8 @@ const routes: Routes = [
   {
     path: "edit-item/:id",
     loadChildren: "./pages/edit-item/edit-item.module#EditItemPageModule"
-  }
+  },
+  { path: 'owner-orders', loadChildren: './pages/owner-orders/owner-orders.module#OwnerOrdersPageModule' }
 ];
 
 @NgModule({
