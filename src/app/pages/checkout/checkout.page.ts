@@ -115,7 +115,8 @@ export class CheckoutPage implements OnInit {
         customer_id: `customer.${this.authService.user.uid}`,
         restaurant_id: this.restaurant.id,
         placed_at: new Date().toISOString(),
-        driver_id: ""
+        driver_id: "",
+        approved: false
       })
       .then(async () => {
         this.items = [];
