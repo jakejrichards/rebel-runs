@@ -75,8 +75,25 @@ export class RestaurantService {
     this.messages = db.collection("messages");
   }
 
-  createOrder(order: Order) {
-    return this.orders.add(order);
+  async createOrder(order: Order) {
+    await this.orders.add(order);
+    this.getRestaurant(order.restaurant_id).forEach(({ owner_id, name }) => {
+      return this.createMessage({
+        user_id: _.trimStart(owner_id, "owner."),
+        text: `${order.customer.firstName} ${
+          order.customer.lastName
+        } has placed a $${order.total} order for ${name}!`,
+        created_at: new Date().toISOString()
+      });
+    });
+  }
+
+  createMessage(messageData: Omit<Message, "id">) {
+    return this.messages.add(messageData);
+  }
+
+  deleteMessage(id: string) {
+    return this.messages.doc(id).delete();
   }
 
   createRestaurant(restaurantData: Omit<Restaurant, "id">) {

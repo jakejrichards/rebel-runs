@@ -20,6 +20,10 @@ export class MessagesPage implements OnInit {
     private restaurantService: RestaurantService
   ) {}
 
+  deleteMessage(id: string) {
+    return this.restaurantService.deleteMessage(id);
+  }
+
   ngOnInit() {
     this.restaurantService.getMessages().subscribe(messages => {
       this.messages = _.sortBy(

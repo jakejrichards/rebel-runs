@@ -5,6 +5,7 @@ import {
   RestaurantService
 } from "../../services/restaurant.service";
 import { Router } from "@angular/router";
+import { AuthService } from "src/app/services/auth.service";
 
 @Component({
   selector: "app-owner",
@@ -15,6 +16,7 @@ export class OwnerPage implements OnInit {
   restaurants: Restaurant[] = [];
 
   constructor(
+    private authService: AuthService,
     public restaurantService: RestaurantService,
     private router: Router
   ) {}
@@ -29,7 +31,9 @@ export class OwnerPage implements OnInit {
 
   ngOnInit() {
     this.restaurantService.getRestaurants().subscribe(restaurants => {
-      this.restaurants = restaurants;
+      this.restaurants = restaurants.filter(
+        ({ owner_id }) => owner_id === `owner.${this.authService.user.uid}`
+      );
     });
   }
 
